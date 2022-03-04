@@ -16,6 +16,11 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact to='/'>
+          </Route>
+          <Route>
+            Page Not Found
+          </Route>
         </Switch>
       )}
     </>
