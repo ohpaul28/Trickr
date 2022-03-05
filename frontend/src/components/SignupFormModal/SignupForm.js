@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { useDispatch} from "react-redux";
 import * as sessionActions from "../../store/session";
 // import './SignupForm.css';
 
 function SignupForm() {
     const dispatch = useDispatch();
-    const sessionUser = useSelector((state) => state.session.user);
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -33,9 +31,10 @@ function SignupForm() {
     return (
         <form onSubmit={handleSubmit}>
             <ul>
-                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                {errors.map((error, idx) =>
+                <li id="error" key={idx}>{error}</li>)}
             </ul>
-            <label>
+            <label className="formModal">
                 Email
                 <input
                     type="text"
@@ -44,7 +43,7 @@ function SignupForm() {
                     required
                 />
             </label>
-            <label>
+            <label className="formModal">
                 Username
                 <input
                     type="text"
@@ -53,7 +52,7 @@ function SignupForm() {
                     required
                 />
             </label>
-            <label>
+            <label className="formModal">
                 Password
                 <input
                     type="password"
@@ -62,7 +61,7 @@ function SignupForm() {
                     required
                 />
             </label>
-            <label>
+            <label className="formModal">
                 Confirm Password
                 <input
                     type="password"
@@ -71,7 +70,9 @@ function SignupForm() {
                     required
                 />
             </label>
-            <button type="submit">Sign Up</button>
+            <div className="modalButton">
+                <button type="submit">Sign Up</button>
+            </div>
         </form>
     );
 }

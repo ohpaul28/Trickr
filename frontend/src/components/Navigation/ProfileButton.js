@@ -31,12 +31,12 @@ function ProfileButton({ user }) {
     return (
         <>
             <button onClick={openMenu}>
+                User Info
                 <i className="fas fa-user-circle" />
             </button>
             {showMenu && (
                 <ul className="profile-dropdown">
-                    <li>{user.username}</li>
-                    <li>{user.email}</li>
+                    <li>Welcome to Trickr, {user.username}!</li>
                     <li>
                         <button onClick={logout}>Log Out</button>
                     </li>
