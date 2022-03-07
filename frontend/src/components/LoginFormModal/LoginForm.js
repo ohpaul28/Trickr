@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
+import SignupForm from "../SignupFormModal/SignupForm";
 
-function LoginForm() {
+function LoginForm({showLModal, setShowLModal, showSModal, setShowSModal}) {
     const dispatch = useDispatch();
     const [credential, setCredential] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
+
+    const onClick = () => {
+        setShowLModal(false);
+        setShowSModal(true);
+    }
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -26,26 +33,36 @@ function LoginForm() {
                     <li id="error" key={idx}>{error}</li>
                 ))}
             </ul>
+            <div className="formModal">
+                Log in to Trickr
+            </div>
             <label className="formModal">
-                Username or Email
                 <input
                     type="text"
                     value={credential}
                     onChange={(e) => setCredential(e.target.value)}
+                    placeholder="Email Address"
                     required
                 />
             </label>
             <label className="formModal">
-                Password
                 <input
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Password"
                     required
                 />
             </label>
             <div className="modalButton">
-                <button type="submit">Log In</button>
+                <button className="inModal" type="submit">Log In</button>
+            </div>
+            <a className="formModal">
+                Forgot password?
+            </a>
+            <div className='reNav formModal'>
+                Not a Trickr member?
+                <span onClick={onClick}>Sign up here.</span>
             </div>
         </form>
     );

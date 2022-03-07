@@ -24,6 +24,7 @@
     display: flex;
     justify-content: center;
     width: 300px;
+    border-radius: .25rem;
 }
 
 .formModal {
@@ -42,4 +43,8 @@
 
 li#error::marker {
     content: "❌"
+}
+
+div.tos {
+    font-size: 12px;
 }
