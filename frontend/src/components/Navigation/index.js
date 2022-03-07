@@ -1,17 +1,21 @@
 import React, {useState} from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
-// import logo from '../../images/flickr_logo.png'
+import logo from '../../images/flickr_logo.png'
 
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
     const [showLModal, setShowLModal] = useState(false);
     const [showSModal, setShowSModal] = useState(false);
+
+    const onClick = () => {
+
+    }
 
     let sessionLinks;
     if (sessionUser) {
@@ -28,13 +32,14 @@ function Navigation({ isLoaded }) {
     }
 
     return (
-        <ul className="navlinkUl">
-            <li>
-                {/* <NavLink><img href='' alt='' src={logo}/></NavLink> */}
-                <NavLink className="navlink" exact to="/">Home</NavLink>
-                {isLoaded && sessionLinks}
-            </li>
-        </ul>
+            <div className="navlinkUl">
+                <div className="naviLinks">
+                    <Link className="logoImg" to='/'>
+                        <img href="" alt="" className="logo" src={logo}/>
+                    </Link>
+                    {isLoaded && sessionLinks}
+                </div>
+            </div>
     );
 }
 
