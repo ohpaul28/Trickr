@@ -33,10 +33,10 @@ function App() {
             <Explore />
           </Route>
           <Route path='/:photoId/edit'>
-            <EditComment />
+            <EditPhoto />
           </Route>
           <Route path='/:photoId/:commentId/edit'>
-            <EditPhoto />
+            <EditComment />
           </Route>
           <Route>
             <PageNotFound />
