@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Modal } from '../../context/Modal';
 import SignupForm from './SignupForm';
 
@@ -6,7 +6,7 @@ function SignupFormModal({showSModal, setShowSModal, showLModal, setShowLModal})
 
     return (
         <>
-            <button onClick={() => setShowSModal(true)}>Sign Up</button>
+            <button className="navButton S" onClick={() => setShowSModal(true)}>Sign Up</button>
             {showSModal && (
                 <Modal onClose={() => setShowSModal(false)}>
                     <SignupForm showSModal={showSModal} setShowSModal={setShowSModal} showLModal={showLModal} setShowLModal={setShowLModal}/>

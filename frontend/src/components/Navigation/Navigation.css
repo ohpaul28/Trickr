@@ -21,11 +21,8 @@
 .naviLinks {
     display: flex;
     align-content: center;
-    width: 100%;
-    
 }
 
-.logoImage {
-    display: flex;
-    align-content: center;
+.navButton {
+    /* position: absolute; */
 }

@@ -5,17 +5,13 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
-import logo from '../../images/flickr_logo.png'
+import logo from '../../images/removebgh.png'
 
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
     const [showLModal, setShowLModal] = useState(false);
     const [showSModal, setShowSModal] = useState(false);
-
-    const onClick = () => {
-
-    }
 
     let sessionLinks;
     if (sessionUser) {
