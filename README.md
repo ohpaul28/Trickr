@@ -31,3 +31,9 @@ Users will be able to see all the different optical illusions they and other use
 * Under an illusion's page view all comments for the illusion
 * Write a new comment
 * Edit/delete your own comments
+
+
+### Getting Started:
+*
+*
+* 
