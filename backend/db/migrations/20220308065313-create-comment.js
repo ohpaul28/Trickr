@@ -9,13 +9,22 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       userId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Users',
+        }
       },
-      imageId: {
-        type: Sequelize.INTEGER
+      illusionId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Illusions',
+        }
       },
       comment: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

@@ -3,7 +3,8 @@ const { faker } = require('@faker-js/faker');
 const randomNumber = num => Math.floor(Math.random() * Math.floor(num) + 1)
 
 function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
+    let num = Math.floor(Math.random() * max)
+    return num + 1;
 }
 
 let fill;
@@ -14,7 +15,7 @@ const seedComments = num => {
     while (i < num) {
         const comments = {
             userId: getRandomInt(3),
-            imageId: getRandomInt(9),
+            illusionId: getRandomInt(9),
             comment: faker.lorem.sentence(),
             createdAt: fill,
             updatedAt: fill
@@ -24,5 +25,5 @@ const seedComments = num => {
         i++;
     }
 }
-
+// console.log(getRandomInt(4))
 seedComments(100)

@@ -1,0 +1,16 @@
+.illusionsContainer {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    /* flex-direction: column; */
+    width: 90vw;
+    margin: 0 auto;
+}
+
+.illusion {
+    object-fit: cover;
+    width: 300px;
+    height: 300px;
+    padding: 5px 5px;
+}

@@ -12,7 +12,7 @@ const loadIllusions = (illusions) => {
 
 
 export const getAllIllusions = () => async (dispatch) => {
-    const  response = await csrfFetch('/api/illusions')
+    const  response = await fetch('/api/illusions')
 
     if (response.ok) {
         const data = await response.json();
@@ -22,13 +22,18 @@ export const getAllIllusions = () => async (dispatch) => {
     }
 }
 
-const initialState = {};
+const initialState = {
+    entries: {},
+    isLoading: true
+};
 
 const illusionsReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_ALL_ILLUSIONS: {
-            const newState = {};
-            action.illusions.forEach((illusion) => (newState[illusion.id] = illusion))
+            const newState = {...state};
+            const newEntries = {};
+            action.illusions.forEach((illusion) => (newEntries[illusion.id] = illusion))
+            newState.entries = newEntries
             return newState;
         }
         default:
