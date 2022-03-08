@@ -1,10 +1,10 @@
 .navlinkUl {
     list-style-type: none;
-    position: absolute;
+    position: fixed;
     top: 0px;
     left: 0px;
     right: 0px;
-    background-color: rgba(0, 0, 0, 0.42);
+    background-color: rgba(21,21,23,.95);
     padding: 0px 0px 0px 0px;
     margin: 0px 0px 0px 0px;
     height: 50px;
@@ -24,6 +24,6 @@
     align-content: center;
 }
 
-.navButton {
-    /* position: absolute; */
+.userInfo {
+    background-color: white;
 }

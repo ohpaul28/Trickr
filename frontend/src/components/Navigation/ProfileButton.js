@@ -30,10 +30,10 @@ function ProfileButton({ user }) {
 
     return (
         <>
-            <button onClick={openMenu}>
+            <div className="userInfo" onClick={openMenu}>
                 User Info
                 <i className="fas fa-user-circle" />
-            </button>
+            </div>
             {showMenu && (
                 <ul className="profile-dropdown">
                     <li>Welcome to Trickr, {user.username}!</li>

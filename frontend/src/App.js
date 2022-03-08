@@ -32,10 +32,10 @@ function App() {
           <Route path='/explore'>
             <Explore />
           </Route>
-          <Route path='/:photoId/edit'>
+          <Route path='/explore/:photoId/edit'>
             <EditPhoto />
           </Route>
-          <Route path='/:photoId/:commentId/edit'>
+          <Route path='/explore/:photoId/:commentId/edit'>
             <EditComment />
           </Route>
           <Route>
