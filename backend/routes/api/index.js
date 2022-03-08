@@ -7,7 +7,7 @@ router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
 
-router.use('/illusions', illusionsRouter);
+router.use('/explore', illusionsRouter);
 
 router.post('/test', (req, res) => {
     res.json({ requestBody: req.body });
