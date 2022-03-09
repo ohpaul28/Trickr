@@ -6,7 +6,7 @@ import './Explore.css';
 
 function Explore() {
     const dispatch = useDispatch();
-    const illusionsObj = useSelector(state => state.illusionState.entries)
+    const illusionsObj = useSelector(state => state.illusionState)
     const illusions = Object.values(illusionsObj);
 
     useEffect(() => {
@@ -14,8 +14,8 @@ function Explore() {
     },[dispatch])
 
     return (
-        <div className="illusionsContainer">
-            <ul>
+        <div>
+            <ul className="illusionsContainer">
             {illusions.map(({id, illusionURL}) =>(
                 <Link key={id} to={`/explore/${id}`}>
                     <img className="illusion" key={id} alt='' src={illusionURL}/>

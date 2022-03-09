@@ -5,34 +5,25 @@ import {getOneIllusion} from '../../store/illusions'
 
 function SingleIllusion() {
     const { illusionId } = useParams()
-    // console.log(illusionId);
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
-    const illusionsObj = useSelector((state) => state.illusionState.entries)
-    // const illusionUserId = illusionsObj[illusionId]?.userId
-    // console.log("========================",illusionUserId);
-    let illusionUserId;
-    if (illusionsObj) {
-        illusionUserId = illusionsObj[illusionId].userId
-    }
-    // console.log("________________________", sessionUser);
-    console.log("========================",illusionUserId);
-    useEffect(() => {
-        dispatch(getOneIllusion(illusionId))
-    },[dispatch, illusionId])
+    const illusionObj = useSelector((state) => state.illusionState[illusionId])
+    console.log("========================",illusionObj);
 
+    useEffect(() => {
+        dispatch(getOneIllusion(illusionId)) 
+    },[dispatch, illusionId])
 
     return (
         <>
             <h1>Hello from SingleIllusion</h1>
+            <div>{illusionObj?.description}</div>
             {/* {sessionUser.id === illusionsObj[illusionId].userId ?
             <NavLink className="navButton" exact to={`/explore/${illusionId}/edit`}>
                 Edit
             </NavLink> : null} */}
             {/* {sessionUser.id === userId ?
                 <div onClick={}>Delete</div> : null} */}
-
-
         </>
     );
 }

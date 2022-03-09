@@ -97,7 +97,7 @@ export const getAllIllusions = () => async (dispatch) => {
 }
 
 const initialState = {
-    entries: {},
+    // entries: {},
     isLoading: true
 };
 
@@ -106,24 +106,22 @@ const illusionsReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case GET_ALL_ILLUSIONS: {
-            const newEntries = {};
-            action.illusions.forEach((illusion) => (newEntries[illusion.id] = illusion))
-            newState.entries = newEntries
+            action.illusions.forEach((illusion) => (newState[illusion.id] = illusion))
             return newState;
         }
         case GET_ONE_ILLUSION: {
-            let newEntries = {};
-            newEntries[action.illusion?.id] = action.illusion;
-            newState.entries = newEntries
+            newState[action.illusion?.id] = action.illusion;
             return newState;
         }
         case ADD_ONE: {
-            const newEntries = {};
-            newEntries[action.illusion?.id] = action.illusion
-            newState.entries = newEntries
+            newState[action.illusion?.id] = action.illusion
             return newState
         }
-        // case UPDATE_ONE: {
+        case UPDATE_ONE: {
+            newState[action.illusion?.id] = action.illusion
+            return newState
+        }
+        // case DELETE_ONE: {
 
         // }
         default:

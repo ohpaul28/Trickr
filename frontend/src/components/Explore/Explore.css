@@ -16,3 +16,7 @@
     height: 300px;
     padding: 20px 20px;
 }
+
+.illusion:hover {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+}
