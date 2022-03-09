@@ -39,7 +39,7 @@ const updateOne = (illusion) => {
 
 //thunk action creator
 export const addIllusion = (data) => async dispatch => {
-    const res = await fetch('/api/explore', {
+    const res = await csrfFetch('/api/explore', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)

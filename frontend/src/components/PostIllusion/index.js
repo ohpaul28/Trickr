@@ -1,22 +1,42 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { addIllusion } from '../../store/illusions';
+import {csrfFetch} from '../../store/csrf';
 
+
+// async function getUser() {
+//     const response = await csrfFetch('/api/session')
+//     const data = await response.json();
+//     return data.user.id
+// }
 
 function PostIllusion() {
     const dispatch = useDispatch();
-    const illusionsObj = useSelector(state => state.illusionState.entries)
+    const [illusionURL, setIllusionURL] = useState("");
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
 
-    useEffect(() => {
-        dispatch(addIllusion())
-    }, [dispatch])
+    const reset = () => {
+        setTitle("")
+        setIllusionURL("")
+        setDescription("")
+    }
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        // const userId = getUser();
+
         const newIllusion = {
-            
+            // userId,
+            illusionURL,
+            title,
+            description
         }
+
+        dispatch(addIllusion(newIllusion))
+        reset();
     }
 
 
@@ -24,6 +44,13 @@ function PostIllusion() {
         <div className="postContainer">
             <h1>Post Illusion</h1>
             <form onSubmit={handleSubmit}>
+                {/* <input
+                    type="text"
+                    onChange={(e) => setUserId(e.target.value)}
+                    value={userId}
+                    placeholder="userid"
+                    name="userId"
+                /> */}
                 <input
                     type="text"
                     onChange={(e) => setTitle(e.target.value)}
@@ -33,16 +60,16 @@ function PostIllusion() {
                 />
                 <input
                     type="text"
-                    onChange={(e) => setImageUrl(e.target.value)}
-                    value={imageUrl}
-                    placeholder="Image URL"
-                    name="imageUrl"
+                    onChange={(e) => setIllusionURL(e.target.value)}
+                    value={illusionURL}
+                    placeholder="Your Illusion's URL"
+                    name="illusionUrl"
                 />
                 <textarea
-                    value={body}
-                    onChange={(e) => setBody(e.target.value)}
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
                     name="body"
-                    placeholder="Add your entry"
+                    placeholder="Please add a description."
                     rows="10"
                 ></textarea>
                 <button type="submit">Submit</button>
