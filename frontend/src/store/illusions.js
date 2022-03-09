@@ -15,10 +15,10 @@ const loadIllusions = (illusions) => {
     }
 }
 
-const loadOneIllusion = (illusions) => {
+const loadOneIllusion = (illusion) => {
     return {
         type: GET_ONE_ILLUSION,
-        illusions
+        illusion
     }
 }
 
@@ -39,23 +39,23 @@ const updateOne = (illusions) => {
 
 //thunk action creator
 export const getOneIllusion = (illusionId) => async (dispatch) => {
-    const response = await csrfFetch(`/api/explore/${illusionId}`)
-
-    if (response.ok) {
+    const response = await fetch(`/api/explore/${illusionId}`)
+    // console.log("138079567erguhaklweui4ayk87ag",illusionId)
+    // if (response.ok) {
         const illusion = await response.json();
         dispatch(loadOneIllusion(illusion));
         return illusion
-    }
+    // }
 }
 
 export const getAllIllusions = () => async (dispatch) => {
-    const  response = await csrfFetch('/api/explore')
+    const  response = await fetch('/api/explore')
 
     if (response.ok) {
         const data = await response.json();
 
         dispatch(loadIllusions(data));
-        console.log("---------------------------",data)
+        // console.log("---------------------------",data)
         return data
     }
 }
@@ -66,22 +66,27 @@ const initialState = {
 };
 
 const illusionsReducer = (state = initialState, action) => {
+    const newState = {...state};
+
+
     switch (action.type) {
         case GET_ALL_ILLUSIONS: {
-            const newState = {...state};
             const newEntries = {};
             action.illusions.forEach((illusion) => (newEntries[illusion.id] = illusion))
             newState.entries = newEntries
             return newState;
         }
         case GET_ONE_ILLUSION: {
-            return {
-                ...state,
-                [action.illusion.id]: {
-                    ...state[action.illusion.id],
-                    ...action.illusion
-                }
-            }
+            let newEntries = {};
+            newEntries[action.illusion?.id] = action.illusion;
+            newState.entries = newEntries
+            return newState;
+        }
+        case ADD_ONE: {
+
+        }
+        case UPDATE_ONE: {
+            
         }
         default:
             return state;

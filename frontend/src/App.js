@@ -7,6 +7,7 @@ import LandingPage from "./components/LandingPage";
 import PageNotFound from "./components/PageNotFound";
 import PostPhoto from "./components/PostPhoto";
 import Explore from "./components/Explore";
+import SingleIllusion from "./components/SingleIllusion";
 import EditComment from "./components/EditComment";
 import EditPhoto from "./components/EditPhoto";
 
@@ -26,17 +27,20 @@ function App() {
           <Route exact path='/'>
             <LandingPage />
           </Route>
+          <Route path='/explore/:illusionId/:commentId/edit'>
+            <EditComment />
+          </Route>
+          <Route path='/explore/:illusionId/edit'>
+            <EditPhoto />
+          </Route>
+          <Route path='/explore/:illusionId'>
+            <SingleIllusion />
+          </Route>
           <Route path='/post'>
             <PostPhoto />
           </Route>
           <Route path='/explore'>
             <Explore />
-          </Route>
-          <Route path='/explore/:photoId/edit'>
-            <EditPhoto />
-          </Route>
-          <Route path='/explore/:photoId/:commentId/edit'>
-            <EditComment />
           </Route>
           <Route>
             <PageNotFound />

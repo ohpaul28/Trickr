@@ -11,9 +11,19 @@ router.get('/', asyncHandler( async (req, res) => {
 }))
 
 router.get('/:illusionId', asyncHandler( async (req, res) => {
-    const illusionId = req.params.illusionId
-    const illusion = await Illusion.findByPk(illusionId);
+    const illusionId = parseInt(req.params.illusionId, 10)
+    const illusion = await Illusion.findOne({
+        where: {
+            id: illusionId
+        }
+    })
     return res.json(illusion)
+
+    //findByPk
+    // const illusionId = req.params.illusionId
+    // const illusion = await Illusion.findByPk(illusionId)
+    // return res.json(illusion);
+
 }))
 
 
