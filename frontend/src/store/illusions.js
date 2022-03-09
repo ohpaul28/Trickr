@@ -4,7 +4,8 @@ import { csrfFetch } from './csrf'
 const GET_ALL_ILLUSIONS = '/illusions/getAllIllusions';
 const GET_ONE_ILLUSION = '/illusions/getOneIllusion';
 const ADD_ONE = '/illusions/addOne';
-const UPDATE_ONE = '/illusions/addOne';
+const UPDATE_ONE = '/illusions/updateOne';
+const DELETE_ONE = '/illusions/deleteone';
 
 
 //action creators
@@ -36,12 +37,30 @@ const updateOne = (illusion) => {
     }
 }
 
+const deleteOne = (illusion) => {
+    return {
+        type: DELETE_ONE,
+        illusion
+    }
+}
+
 
 //thunk action creator
+export const deleteIllusion = (illusionId) => async dispatch => {
+    const res = await csrfFetch(`/api/explore/${illusionId}`, {
+        method: "DELETE",
+    })
+
+    if (res.ok) {
+        const { id: deletedIllusionId } = await res.json();
+        dispatch(deleteOne(deletedIllusionId))
+        return deletedIllusionId;
+    }
+}
 
 export const updateIllusion = data => async dispatch => {
     const res = await csrfFetch('/api/explore/:illusionId', {
-        method: "PUT",
+        method: "PATCH",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(data)
     })

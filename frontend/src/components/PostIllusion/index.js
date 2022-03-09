@@ -54,7 +54,7 @@ function PostIllusion() {
                     onChange={(e) => setDescription(e.target.value)}
                     name="body"
                     placeholder="Please add a description."
-                    rows="10"
+                    rows="5"
                 ></textarea>
                 <button type="submit">Submit</button>
             </form>
