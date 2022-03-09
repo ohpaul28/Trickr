@@ -5,10 +5,11 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
 import PageNotFound from "./components/PageNotFound";
-import PostPhoto from "./components/PostPhoto";
+import PostIllusion from "./components/PostIllusion";
 import Explore from "./components/Explore";
+import SingleIllusion from "./components/SingleIllusion";
 import EditComment from "./components/EditComment";
-import EditPhoto from "./components/EditPhoto";
+import EditIllusion from "./components/EditIllusion";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,17 +27,20 @@ function App() {
           <Route exact path='/'>
             <LandingPage />
           </Route>
+          <Route path='/explore/:illusionId/:commentId/edit'>
+            <EditComment />
+          </Route>
+          <Route path='/explore/:illusionId/edit'>
+            <EditIllusion />
+          </Route>
+          <Route path='/explore/:illusionId'>
+            <SingleIllusion />
+          </Route>
           <Route path='/post'>
-            <PostPhoto />
+            <PostIllusion />
           </Route>
           <Route path='/explore'>
             <Explore />
-          </Route>
-          <Route path='/:photoId/edit'>
-            <EditPhoto />
-          </Route>
-          <Route path='/:photoId/:commentId/edit'>
-            <EditComment />
           </Route>
           <Route>
             <PageNotFound />
