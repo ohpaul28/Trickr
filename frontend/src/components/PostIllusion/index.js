@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addIllusion } from '../../store/illusions';
-import {csrfFetch} from '../../store/csrf';
-
-
-// async function getUser() {
-//     const response = await csrfFetch('/api/session')
-//     const data = await response.json();
-//     return data.user.id
-// }
 
 function PostIllusion() {
     const dispatch = useDispatch();
+    const sessionUser = useSelector((state) => state.session.user);
     const [illusionURL, setIllusionURL] = useState("");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -26,10 +19,8 @@ function PostIllusion() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // const userId = getUser();
-
         const newIllusion = {
-            // userId,
+            userId: sessionUser.id,
             illusionURL,
             title,
             description
@@ -44,13 +35,6 @@ function PostIllusion() {
         <div className="postContainer">
             <h1>Post Illusion</h1>
             <form onSubmit={handleSubmit}>
-                {/* <input
-                    type="text"
-                    onChange={(e) => setUserId(e.target.value)}
-                    value={userId}
-                    placeholder="userid"
-                    name="userId"
-                /> */}
                 <input
                     type="text"
                     onChange={(e) => setTitle(e.target.value)}

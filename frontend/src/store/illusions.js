@@ -38,6 +38,18 @@ const updateOne = (illusion) => {
 
 
 //thunk action creator
+
+export const updateIllusion = data => async dispatch => {
+    const res = await csrfFetch('/api/explore/:illusionId', {
+        method: "PUT",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data)
+    })
+    const updatedIllusion = await res.json()
+    dispatch(updateOne(updatedIllusion))
+    return updatedIllusion;
+}
+
 export const addIllusion = (data) => async dispatch => {
     const res = await csrfFetch('/api/explore', {
         method: "POST",
