@@ -22,40 +22,45 @@ const loadOneIllusion = (illusion) => {
     }
 }
 
-const addOneIllusion = (illusions) => {
+const addOneIllusion = (illusion) => {
     return {
         type: ADD_ONE,
-        illusions
+        illusion
     }
 }
 
-const updateOne = (illusions) => {
+const updateOne = (illusion) => {
     return {
         type: UPDATE_ONE,
-        illusions
+        illusion
     }
 }
 
 
 //thunk action creator
+export const addIllusion = (data) => async dispatch => {
+    const res = await fetch('/api/explore', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    })
+    const newIllusion = await res.json()
+    dispatch(addOneIllusion(newIllusion))
+    return newIllusion;
+}
+
 export const getOneIllusion = (illusionId) => async (dispatch) => {
     const response = await fetch(`/api/explore/${illusionId}`)
-    // console.log("138079567erguhaklweui4ayk87ag",illusionId)
-    // if (response.ok) {
-        const illusion = await response.json();
-        dispatch(loadOneIllusion(illusion));
-        return illusion
-    // }
+    const illusion = await response.json();
+    dispatch(loadOneIllusion(illusion));
+    return illusion
 }
 
 export const getAllIllusions = () => async (dispatch) => {
-    const  response = await fetch('/api/explore')
-
+    const response = await fetch('/api/explore')
     if (response.ok) {
         const data = await response.json();
-
         dispatch(loadIllusions(data));
-        // console.log("---------------------------",data)
         return data
     }
 }
@@ -66,8 +71,7 @@ const initialState = {
 };
 
 const illusionsReducer = (state = initialState, action) => {
-    const newState = {...state};
-
+    const newState = { ...state };
 
     switch (action.type) {
         case GET_ALL_ILLUSIONS: {
@@ -83,11 +87,14 @@ const illusionsReducer = (state = initialState, action) => {
             return newState;
         }
         case ADD_ONE: {
+            const newEntries = {};
+            newEntries[action.illusion?.id] = action.illusion
+            newState.entries = newEntries
+            return newState
+        }
+        // case UPDATE_ONE: {
 
-        }
-        case UPDATE_ONE: {
-            
-        }
+        // }
         default:
             return state;
     }

@@ -26,5 +26,9 @@ router.get('/:illusionId', asyncHandler( async (req, res) => {
 
 }))
 
+router.post('/', asyncHandler( async (req, res) => {
+    const illusion = await Illusion.create(req.body);
+    res.json(illusion)
+}))
 
 module.exports = router;

@@ -19,12 +19,12 @@ Users will be able to see all the different optical illusions they and other use
 * Node.js
 
 ## Features:
-### Photos:
+### Illusions:
 * Viewing all uploaded illusions under /explore
 * Viewing one illusion with additional information
   * uploader, the title, description, and comments
 * Upload new illusions with a title and a description
-* Edit an existing photo's title and description
+* Edit an existing Illusion's title and description
 * Delete illusions you no longer want displayed
 
 ### Comments:
@@ -36,4 +36,4 @@ Users will be able to see all the different optical illusions they and other use
 ### Getting Started:
 *
 *
-* 
+*
