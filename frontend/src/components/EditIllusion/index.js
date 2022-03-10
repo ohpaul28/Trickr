@@ -11,7 +11,6 @@ function EditIllusion() {
     const history = useHistory();
     const { illusionId } = useParams();
     const illusion = useSelector(state => state.illusionState)
-    // console.log(illusion)
 
     const handleSubmit = e => {
         e.preventDefault();

@@ -62,7 +62,7 @@ router.post('/',
 router.put('/:illusionId',
     validateIllusionPatch,
     asyncHandler(async (req, res) => {
-        console.log(req.params)
+        // console.log("=------------",req.body)
         const illusionId = parseInt(req.params.illusionId)
         const { title, description } = req.body
         const illusion = await Illusion.findOne({
@@ -83,7 +83,7 @@ router.put('/:illusionId',
 
 router.delete('/:illusionId',
     asyncHandler(async (req, res) => {
-        const illusionId = parseInt(req.params.songId)
+        const illusionId = parseInt(req.params.illusionId)
 
         const illusion = await Illusion.findOne({
             where: {

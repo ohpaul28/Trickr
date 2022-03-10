@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
-import { useParams, NavLink } from 'react-router-dom';
+import { useParams, NavLink, useHistory, Link } from 'react-router-dom';
 import {useDispatch, useSelector } from 'react-redux';
-import {getOneIllusion} from '../../store/illusions'
+import {getOneIllusion} from '../../store/illusions';
+import { deleteIllusion } from '../../store/illusions';
 
 function SingleIllusion() {
     const { illusionId } = useParams()
+    const history = useHistory()
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const illusionObj = useSelector((state) => state.illusionState[illusionId])
@@ -16,8 +18,8 @@ function SingleIllusion() {
     },[dispatch, illusionId])
 
 
-    const handleSubmit = () => {
-
+    const onDelete = () => {
+        dispatch(deleteIllusion(illusionId))
     }
 //{spot ? <img className="image-spot" src={`${spot?.mainImageURL}`} alt="movie set idea"></img> : null}
 
@@ -32,8 +34,8 @@ function SingleIllusion() {
             <NavLink className="navButton" exact to={`/explore/${illusionId}/edit`}>
                 Edit
             </NavLink> : null}
-            {/* {sessionUser.id === illusionObj.userId ?
-                <div onClick={}>Delete</div> : null} */}
+            {sessionUser.id === illusionObj.userId ?
+                <Link to='/explore' onClick={onDelete}>Delete</Link> : null}
         </>
     );
 }

@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   Illusion.associate = function(models) {
     // associations can be defined here
     Illusion.belongsTo(models.User, { foreignKey: 'userId' });
-    Illusion.hasMany(models.Comment, {foreignKey: 'illusionId'});
+    Illusion.hasMany(models.Comment, {foreignKey: 'illusionId', onDelete:'cascade', hooks: true});
   };
   return Illusion;
 };

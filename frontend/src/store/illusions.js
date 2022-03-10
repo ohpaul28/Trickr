@@ -51,18 +51,18 @@ export const deleteIllusion = (illusionId) => async dispatch => {
         method: "DELETE",
     })
 
-    if (res.ok) {
-        const { id: deletedIllusionId } = await res.json();
-        dispatch(deleteOne(deletedIllusionId))
-        return deletedIllusionId;
-    }
+    const { id: deletedIllusionId } = await res.json();
+    dispatch(deleteOne(deletedIllusionId))
+    return deletedIllusionId;
+
 }
 
 export const updateIllusion = updateIllusion => async dispatch => {
     // console.log(updateIllusion)
+    console.log("=------------", updateIllusion)
     const req = await csrfFetch(`/api/explore/${updateIllusion.id}`, {
         method: "PUT",
-        headers: {"Content-Type": "application/json"},
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updateIllusion)
     })
     const updatedIllusion = await req.json()
@@ -98,7 +98,6 @@ export const getAllIllusions = () => async (dispatch) => {
 }
 
 const initialState = {
-    // entries: {},
     isLoading: true
 };
 
@@ -122,9 +121,10 @@ const illusionsReducer = (state = initialState, action) => {
             newState[action.illusion?.id] = action.illusion
             return newState
         }
-        // case DELETE_ONE: {
-
-        // }
+        case DELETE_ONE: {
+            delete newState[action.illusion?.id]
+            return newState
+        }
         default:
             return state;
     }
