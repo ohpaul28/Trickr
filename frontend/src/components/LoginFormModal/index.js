@@ -4,9 +4,14 @@ import LoginForm from './LoginForm';
 
 function LoginFormModal({showLModal, setShowLModal, showSModal, setShowSModal}) {
 
+    const onClick = () => {
+        setShowSModal(false);
+        setShowLModal(true);
+    }
+
     return (
         <>
-            <div className="navButton L" onClick={() => setShowLModal(true)}>Log In</div>
+            <div className="navButton L" onClick={onClick}>Log In</div>
             {showLModal && (
                 <Modal onClose={() => setShowLModal(false)}>
                     <LoginForm showLModal={showLModal} setShowLModal={setShowLModal} showSModal={showSModal} setShowSModal={setShowSModal}/>

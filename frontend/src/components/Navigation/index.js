@@ -35,6 +35,12 @@ function Navigation({ isLoaded }) {
                     <Link className="logoImg" to='/'>
                         <img href="" alt="" className="logo" src={logo}/>
                     </Link>
+                    <Link className="exploreLink" to='/explore'>
+                        <div>Explore</div>
+                    </Link>
+                    <Link className="postLink" to='/post'>
+                        <div>Post</div>
+                    </Link>
                 </div>
                 {isLoaded && sessionLinks}
             </div>
@@ -44,5 +50,5 @@ function Navigation({ isLoaded }) {
         </>
     );
 }
- 
+
 export default Navigation;

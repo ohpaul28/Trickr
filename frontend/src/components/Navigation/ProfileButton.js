@@ -36,11 +36,11 @@ function ProfileButton({ user }) {
             <div className="userInfo" onClick={openMenu}>
                 You
                 <i className="fas fa-user-circle" />
-            {showMenu && (
-                <div className="profile-dropdown">
-                    <div>Welcome to Trickr, {user.username}!</div>
-                    <div onClick={logout}>Log Out</div>
-                </div>
+                {showMenu && (
+                    <div className="profile-dropdown">
+                        <div>Welcome to Trickr, {user.username}!</div>
+                        <div className="logoutButton" onClick={logout}>Log Out</div>
+                    </div>
             )}
             </div>
         </>

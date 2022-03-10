@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { addIllusion } from '../../store/illusions';
+import './PostIllusion.css';
 
 function PostIllusion() {
     const dispatch = useDispatch();
@@ -8,13 +10,7 @@ function PostIllusion() {
     const [illusionURL, setIllusionURL] = useState("");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-
-    const reset = () => {
-        setTitle("")
-        setIllusionURL("")
-        setDescription("")
-    }
-
+    const history = useHistory();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -26,21 +22,26 @@ function PostIllusion() {
             description
         }
 
-        dispatch(addIllusion(newIllusion))
-        reset();
+        let res = dispatch(addIllusion(newIllusion))
+        
+        if (res) {
+            history.push('/explore')
+        }
+
     }
 
 
     return (
         <div className="postContainer">
-            <h1>Post Illusion</h1>
-            <form onSubmit={handleSubmit}>
+            <form className="postInputs" onSubmit={handleSubmit}>
                 <input
                     type="text"
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
-                    placeholder="Title"
+                    placeholder="Please provide a title"
                     name="title"
+                    className="postInput"
+                    required
                 />
                 <input
                     type="text"
@@ -48,15 +49,20 @@ function PostIllusion() {
                     value={illusionURL}
                     placeholder="Your Illusion's URL"
                     name="illusionUrl"
+                    className="postInput"
+                    required
                 />
                 <textarea
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     name="body"
-                    placeholder="Please add a description."
+                    placeholder="Description(optional)"
                     rows="5"
+                    className="descriptionInput"
                 ></textarea>
-                <button type="submit">Submit</button>
+                <div className="postButtonContainer">
+                    <button className="postButton" type="submit">Submit</button>
+                </div>
             </form>
         </div>
     );

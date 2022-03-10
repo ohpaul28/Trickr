@@ -1,0 +1,39 @@
+.postContainer {
+    height: 30vh;
+    background-color: rgba(126, 113, 113, 0.301);
+    display: flex;
+    align-self: center;
+    border-radius: 3px;
+    border: 3px solid rgba(0, 0, 0, 0.246)
+    /* flex-direction: column; */
+}
+
+.postInputs {
+    display: grid;
+    padding: 20px;
+    border-radius: 3px;
+    justify-content: center;
+    align-items: center;
+}
+
+.postInput {
+    width: 100%;
+    height: 50%;
+    border-radius: 3px;
+}
+
+.descriptionInput {
+    height: 50%;
+    border-radius: 3px;
+}
+
+.postButton {
+    height: 30px;
+    width: 100px;
+}
+
+.postButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

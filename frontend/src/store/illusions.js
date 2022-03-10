@@ -6,6 +6,7 @@ const GET_ONE_ILLUSION = '/illusions/getOneIllusion';
 const ADD_ONE = '/illusions/addOne';
 const UPDATE_ONE = '/illusions/updateOne';
 const DELETE_ONE = '/illusions/deleteone';
+const GET_USER_ILLUSIONS = '/illusions/getUserIllusions';
 
 
 //action creators
@@ -19,6 +20,13 @@ const loadIllusions = (illusions) => {
 const loadOneIllusion = (illusion) => {
     return {
         type: GET_ONE_ILLUSION,
+        illusion
+    }
+}
+
+const loadUserIllusion = (illusion) => {
+    return {
+        type: GET_USER_ILLUSIONS,
         illusion
     }
 }
@@ -43,6 +51,8 @@ const deleteOne = (illusion) => {
         illusion
     }
 }
+
+
 
 
 //thunk action creator
@@ -80,6 +90,10 @@ export const addIllusion = (data) => async dispatch => {
     const newIllusion = await res.json()
     dispatch(addOneIllusion(newIllusion))
     return newIllusion;
+}
+
+export const getUserIllusions = () => async (dispatch) => {
+    const response = await fetch(`/api/explore`)
 }
 
 export const getOneIllusion = (illusionId) => async (dispatch) => {
