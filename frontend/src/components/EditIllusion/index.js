@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateIllusion } from '../../store/illusions';
 import { useHistory, useParams } from 'react-router-dom';
+import './EditIllusion.css'
 
 function EditIllusion() {
     const dispatch = useDispatch();
@@ -26,6 +27,9 @@ function EditIllusion() {
         history.push(`/explore/${illusionId}`)
     }
 
+    const onClick = () => {
+        history.push(`/explore/${illusionId}`)
+    }
 
     return (
         <div className="postContainer">
@@ -48,6 +52,9 @@ function EditIllusion() {
                 ></textarea>
                 <div className="postButtonContainer">
                     <button className="postButton" type="submit">Submit</button>
+                    <div onClick={onClick} className="cancelButton">
+                        Cancel
+                    </div>
                 </div>
             </form>
         </div>

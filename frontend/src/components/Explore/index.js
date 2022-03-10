@@ -14,7 +14,7 @@ function Explore() {
     },[dispatch])
 
     return (
-        <div>
+        <div className="background">
             <ul className="illusionsContainer">
             {illusions.map(({id, illusionURL}) =>(
                 <Link key={id} to={`/explore/${id}`}>

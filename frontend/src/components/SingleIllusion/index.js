@@ -33,7 +33,7 @@ function SingleIllusion() {
                 {illusionObj ? <img alt="" className="singleIllusionImage" src={illusionObj?.illusionURL} /> : null}
             </div>
             <div className="innerIllusionContainer">
-                {<div className="illusionTitle">{illusionObj?.title}</div>}
+                {<h3 className="illusionTitle">{illusionObj?.title}</h3>}
                 {<div className="illusionDescription">{illusionObj?.description}</div>}
                 <div className="editDeleteContainer">
                     {sessionUser.id === illusionObj.userId ?
