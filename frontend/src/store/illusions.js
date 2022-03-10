@@ -58,13 +58,14 @@ export const deleteIllusion = (illusionId) => async dispatch => {
     }
 }
 
-export const updateIllusion = data => async dispatch => {
-    const res = await csrfFetch('/api/explore/:illusionId', {
-        method: "PATCH",
+export const updateIllusion = updateIllusion => async dispatch => {
+    // console.log(updateIllusion)
+    const req = await csrfFetch(`/api/explore/${updateIllusion.id}`, {
+        method: "PUT",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(data)
+        body: JSON.stringify(updateIllusion)
     })
-    const updatedIllusion = await res.json()
+    const updatedIllusion = await req.json()
     dispatch(updateOne(updatedIllusion))
     return updatedIllusion;
 }

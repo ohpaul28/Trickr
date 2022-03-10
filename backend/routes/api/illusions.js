@@ -40,7 +40,7 @@ router.get(
                 id: illusionId
             }
         })
-        
+
         return res.json(illusion)
 
         //findByPk
@@ -59,10 +59,11 @@ router.post('/',
     })
 )
 
-router.patch('/:illusionId/edit',
+router.put('/:illusionId',
     validateIllusionPatch,
     asyncHandler(async (req, res) => {
-        const illusionId = parseInt(req.params.songId)
+        console.log(req.params)
+        const illusionId = parseInt(req.params.illusionId)
         const { title, description } = req.body
         const illusion = await Illusion.findOne({
             where: {

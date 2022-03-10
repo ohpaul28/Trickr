@@ -11,20 +11,20 @@ function EditIllusion() {
     const history = useHistory();
     const { illusionId } = useParams();
     const illusion = useSelector(state => state.illusionState)
-
+    // console.log(illusion)
 
     const handleSubmit = e => {
         e.preventDefault();
-        
+
         const updatedIllusion = {
-            id: illusion.id,
+            id: illusion[illusionId].id,
             userId: sessionUser.id,
             title,
             description
         }
 
         dispatch(updateIllusion(updatedIllusion))
-        history.push('/explore/:illusionId')
+        history.push(`/explore/${illusionId}`)
     }
 
 

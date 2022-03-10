@@ -8,21 +8,31 @@ function SingleIllusion() {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const illusionObj = useSelector((state) => state.illusionState[illusionId])
-    console.log("========================",illusionObj);
+    // console.log("illusion obj========================",illusionObj);
+    // console.log("user obj ________________________", sessionUser);
 
     useEffect(() => {
-        dispatch(getOneIllusion(illusionId)) 
+        dispatch(getOneIllusion(illusionId))
     },[dispatch, illusionId])
+
+
+    const handleSubmit = () => {
+
+    }
+//{spot ? <img className="image-spot" src={`${spot?.mainImageURL}`} alt="movie set idea"></img> : null}
+
 
     return (
         <>
             <h1>Hello from SingleIllusion</h1>
-            <div>{illusionObj?.description}</div>
-            {/* {sessionUser.id === illusionsObj[illusionId].userId ?
+            {illusionObj ? <img src={illusionObj?.illusionURL} /> : null}
+            {<div>{illusionObj?.title}</div>}
+            {<div>{illusionObj?.description}</div>}
+            {sessionUser.id === illusionObj.userId ?
             <NavLink className="navButton" exact to={`/explore/${illusionId}/edit`}>
                 Edit
-            </NavLink> : null} */}
-            {/* {sessionUser.id === userId ?
+            </NavLink> : null}
+            {/* {sessionUser.id === illusionObj.userId ?
                 <div onClick={}>Delete</div> : null} */}
         </>
     );
