@@ -92,6 +92,7 @@ router.delete('/:illusionId',
         })
         if (illusion) {
             await illusion.destroy()
+            return res.json(illusion.id);
         }
     })
 )

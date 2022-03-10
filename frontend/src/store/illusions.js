@@ -51,7 +51,8 @@ export const deleteIllusion = (illusionId) => async dispatch => {
         method: "DELETE",
     })
 
-    const { id: deletedIllusionId } = await res.json();
+    const deletedIllusionId = await res.json();
+    console.log(deletedIllusionId);
     dispatch(deleteOne(deletedIllusionId))
     return deletedIllusionId;
 
@@ -122,7 +123,7 @@ const illusionsReducer = (state = initialState, action) => {
             return newState
         }
         case DELETE_ONE: {
-            delete newState[action.illusion?.id]
+            delete newState[action.illusion]
             return newState
         }
         default:

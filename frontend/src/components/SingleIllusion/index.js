@@ -10,23 +10,22 @@ function SingleIllusion() {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const illusionObj = useSelector((state) => state.illusionState[illusionId])
-    // console.log("illusion obj========================",illusionObj);
-    // console.log("user obj ________________________", sessionUser);
 
     useEffect(() => {
         dispatch(getOneIllusion(illusionId))
     },[dispatch, illusionId])
 
 
-    const onDelete = () => {
-        dispatch(deleteIllusion(illusionId))
-    }
-//{spot ? <img className="image-spot" src={`${spot?.mainImageURL}`} alt="movie set idea"></img> : null}
+    function onDelete() {
+        let res = dispatch(deleteIllusion(illusionId))
 
+        if (res) {
+            history.push('/explore')
+        }
+    }
 
     return (
         <>
-            <h1>Hello from SingleIllusion</h1>
             {illusionObj ? <img src={illusionObj?.illusionURL} /> : null}
             {<div>{illusionObj?.title}</div>}
             {<div>{illusionObj?.description}</div>}
