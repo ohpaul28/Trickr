@@ -6,23 +6,33 @@ import './EditIllusion.css'
 
 function EditIllusion() {
     const dispatch = useDispatch();
+    const illusion = useSelector(state => state.illusionState)
     const sessionUser = useSelector((state) => state.session.user);
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
+    const [title, setTitle] = useState(illusion.title);
+    const [description, setDescription] = useState(illusion.description);
     const history = useHistory();
     const { illusionId } = useParams();
-    const illusion = useSelector(state => state.illusionState)
+
+
+    // console.log("___________________________________________", title)
+    // console.log("___________________________________________", description)
+
 
     const handleSubmit = e => {
         e.preventDefault();
 
+        // console.log("============", title)
+        // console.log("============", description)
+
         const updatedIllusion = {
             id: illusion[illusionId].id,
             userId: sessionUser.id,
-            title,
-            description
+            title: title? title : illusion.title,
+            description: description? description : illusion.description
         }
 
+        // if (!title) setTitle(illusion.title)
+        // if (!description) setDescription(illusion.description)
         dispatch(updateIllusion(updatedIllusion))
         history.push(`/explore/${illusionId}`)
     }

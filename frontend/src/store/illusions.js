@@ -70,7 +70,7 @@ export const deleteIllusion = (illusionId) => async dispatch => {
 
 export const updateIllusion = updateIllusion => async dispatch => {
     // console.log(updateIllusion)
-    console.log("=------------", updateIllusion)
+    // console.log("=------------", updateIllusion)
     const req = await csrfFetch(`/api/explore/${updateIllusion.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
