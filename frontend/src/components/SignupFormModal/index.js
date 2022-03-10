@@ -4,9 +4,14 @@ import SignupForm from './SignupForm';
 
 function SignupFormModal({showSModal, setShowSModal, showLModal, setShowLModal}) {
 
+    const onClick = () => {
+        setShowLModal(false);
+        setShowSModal(true);
+    }
+
     return (
         <>
-            <button className="navButton S" onClick={() => setShowSModal(true)}>Sign Up</button>
+            <button className="navButton S" onClick={onClick}>Sign Up</button>
             {showSModal && (
                 <Modal onClose={() => setShowSModal(false)}>
                     <SignupForm showSModal={showSModal} setShowSModal={setShowSModal} showLModal={showLModal} setShowLModal={setShowLModal}/>
