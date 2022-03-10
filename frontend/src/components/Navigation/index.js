@@ -17,26 +17,31 @@ function Navigation({ isLoaded }) {
     if (sessionUser) {
         sessionLinks = (
             <ProfileButton user={sessionUser} />
-            
+
         );
     } else {
         sessionLinks = (
-            <>
+            <div className="intro">
                 <LoginFormModal showLModal={showLModal} setShowLModal={setShowLModal} showSModal={showSModal} setShowSModal={setShowSModal}/>
                 <SignupFormModal showSModal={showSModal} setShowSModal={setShowSModal} showLModal={showLModal} setShowLModal={setShowLModal}/>
-            </>
+            </div>
         );
     }
 
     return (
-            <div className="navlinkUl">
+        <>
+            <div className="navlinkTop">
                 <div className="naviLinks">
                     <Link className="logoImg" to='/'>
                         <img href="" alt="" className="logo" src={logo}/>
                     </Link>
-                    {isLoaded && sessionLinks}
                 </div>
+                {isLoaded && sessionLinks}
             </div>
+            <div className="navLinkBot">
+                Bottom Nav
+            </div>
+        </>
     );
 }
 
