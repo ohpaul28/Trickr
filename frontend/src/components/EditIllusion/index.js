@@ -29,14 +29,14 @@ function EditIllusion() {
 
     return (
         <div className="postContainer">
-            <h1>Edit Illusion</h1>
-            <form onSubmit={handleSubmit}>
+            <form className="postInputs" onSubmit={handleSubmit}>
                 <input
                     type="text"
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
                     placeholder="New Title"
                     name="title"
+                    className="postInput"
                 />
                 <textarea
                     value={description}
@@ -44,8 +44,11 @@ function EditIllusion() {
                     name="body"
                     placeholder="New Description"
                     rows="5"
+                    className="descriptionInput"
                 ></textarea>
-                <button type="submit">Submit</button>
+                <div className="postButtonContainer">
+                    <button className="postButton" type="submit">Submit</button>
+                </div>
             </form>
         </div>
     );
