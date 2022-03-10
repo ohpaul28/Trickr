@@ -27,7 +27,7 @@ function Navigation({ isLoaded }) {
             </div>
         );
     }
-
+ 
     return (
         <>
             <div className="navlinkTop">
@@ -44,5 +44,5 @@ function Navigation({ isLoaded }) {
         </>
     );
 }
- 
+
 export default Navigation;
