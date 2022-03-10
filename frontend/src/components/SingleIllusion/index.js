@@ -30,7 +30,7 @@ function SingleIllusion() {
     return (
         <div className="singleIllusion">
             <div className="singleIllusionContainer">
-                {illusionObj ? <img className="singleIllusionImage" src={illusionObj?.illusionURL} /> : null}
+                {illusionObj ? <img alt="" className="singleIllusionImage" src={illusionObj?.illusionURL} /> : null}
             </div>
             <div className="innerIllusionContainer">
                 {<div className="illusionTitle">{illusionObj?.title}</div>}

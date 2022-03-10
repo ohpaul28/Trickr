@@ -1,12 +1,10 @@
 import React from 'react';
 import './LandingPage.css';
-import { Modal } from '../../context/Modal';
-import SignupForm from '../SignupFormModal/SignupForm';
 
 function LandingPage() {
 
         const onClick = () => {
-            
+
         }
 
     return (
