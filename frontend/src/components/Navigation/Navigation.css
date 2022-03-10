@@ -28,7 +28,9 @@
 #root {
     display: flex;
     align-content: space-between;
+    justify-content: center;
     position: absolute;
+    font-family: Proxima Nova,Helvetica,sans-serif;
     top: 0;
     left: 0;
     width: 100%;
@@ -36,7 +38,11 @@
 }
 
 .profile-dropdown {
+    display: flex;
     list-style-type: none;
+    background-color: #151517f2;
+    flex-direction: column;
+    color: white;
 }
 
 .logo {
@@ -48,8 +54,36 @@
     align-content: center;
 }
 
+.exploreLink {
+    list-style-type: none;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.postLink {
+    list-style-type: none;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
 .userInfo {
-    background-color: white;
+    display: flex;
+    background-color: #151517f2;
+    color: white;
+    border-radius: 3px;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.logoutButton {
+    cursor: pointer;
+    justify-self: center;
 }
 
 .intro {

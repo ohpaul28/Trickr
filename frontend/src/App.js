@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
@@ -10,10 +10,12 @@ import Explore from "./components/Explore";
 import SingleIllusion from "./components/SingleIllusion";
 import EditComment from "./components/EditComment";
 import EditIllusion from "./components/EditIllusion";
+import UserPhotos from './components/UserPhotos';
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const sessionUser = useSelector((state) => state.session.user)
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -25,8 +27,10 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path='/'>
-            {/* <BackgroundSlideshow images={[image1, image2, image3, image4, image5, image6, image7, image8]} /> */}
-            <LandingPage />
+            {/* {sessionUser && <UserPhotos />} */}
+            {sessionUser && <Explore />}
+            {!sessionUser && <LandingPage />}
+            {/* <LandingPage /> */}
           </Route>
           <Route path='/explore/:illusionId/:commentId/edit'>
             <EditComment />
