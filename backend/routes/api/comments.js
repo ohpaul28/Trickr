@@ -47,7 +47,7 @@ asyncHandler(async (req, res) => {
             comment: comment
         })
     }
-    return res.json(comment);
+    return res.json(newComment);
 }))
 
 router.delete('/:id',

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateComment } from '../../store/comments';
 import { useHistory, useParams } from 'react-router-dom';
@@ -16,16 +16,12 @@ function EditComment() {
     const handleSubmit = e => {
         e.preventDefault();
 
-        console.log("=========================",commentId);
-
         const updatedComment = {
             id: commentId,
             userId: sessionUser.id,
             illusionId: illusion[illusionId].id,
             comment: comment ? updateThisComment : null
         }
-
-        console.log("____________________________",updatedComment);
 
         let res = dispatch(updateComment(updatedComment));
 

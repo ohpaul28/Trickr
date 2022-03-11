@@ -60,8 +60,6 @@ export const deleteComment = (commentId) => async dispatch => {
 }
 
 export const updateComment = updatedComment => async dispatch => {
-    console.log("************************", updatedComment.illusionId)
-    console.log("------------------------", updatedComment.id)
     const req = await csrfFetch(`/api/comments/${updatedComment.illusionId}/${updatedComment.id}`, {
         method: "PUT",
         headers: {"Content-Type": "application/json"},
@@ -119,6 +117,7 @@ const commentsReducer = (state = initialState, action) => {
             return newState
         }
         case UPDATE_ONE: {
+            console.log("_____________________",action.comment)
             newState[action.comment?.id] = action.comment
             return newState
         }
