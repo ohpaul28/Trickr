@@ -2,9 +2,11 @@ import { csrfFetch } from './csrf'
 
 
 const GET_ALL_COMMENTS = '/comments/getAllComments';
+const GET_ONE_COMMENT = '/comments/getOneComment';
 const ADD_ONE = '/comments/addOne';
 const UPDATE_ONE = '/comments/updateOne';
 const DELETE_ONE = 'comments/deleteOne';
+
 
 
 
@@ -13,6 +15,13 @@ const getAllComments = (comments) => {
     return {
         type: GET_ALL_COMMENTS,
         comments
+    }
+}
+
+const getOneComment = (comment) => {
+    return {
+        type: GET_ONE_COMMENT,
+        comment
     }
 }
 
@@ -51,7 +60,9 @@ export const deleteComment = (commentId) => async dispatch => {
 }
 
 export const updateComment = updatedComment => async dispatch => {
-    const req = await csrfFetch(`/api/comments/${updatedComment.id}`, {
+    console.log("************************", updatedComment.illusionId)
+    console.log("------------------------", updatedComment.id)
+    const req = await csrfFetch(`/api/comments/${updatedComment.illusionId}/${updatedComment.id}`, {
         method: "PUT",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(updatedComment)
@@ -59,7 +70,7 @@ export const updateComment = updatedComment => async dispatch => {
 
     const updated = await req.json();
     dispatch(updateOne(updated))
-    return updatedComment
+    return updated
 }
 
 export const addComment = (data) => async dispatch => {
@@ -79,6 +90,16 @@ export const getAllTheComments = (illusionId) => async (dispatch) => {
         const comments = await res.json();
         dispatch(getAllComments(comments));
         return comments
+    }
+}
+
+export const getAComment = (illusionId, commentId) => async (dispatch) => {
+    const res = await fetch(`/api/comments/${illusionId}/${commentId}`)
+
+    if (res.ok) {
+        const comment = await res.json();
+        dispatch(getOneComment(comment));
+        return comment
     }
 }
 

@@ -5,6 +5,7 @@ import { getOneIllusion } from '../../store/illusions';
 import { deleteIllusion } from '../../store/illusions';
 import { deleteComment, getAllTheComments } from '../../store/comments';
 import { getUsers } from '../../store/users';
+import PostComment from '../PostComment';
 import './SingleIllusion.css';
 
 function SingleIllusion() {
@@ -41,12 +42,12 @@ function SingleIllusion() {
         }
     }
 
-    // function onDeleteComment(commentId) {
-    //     let res = dispatch(deleteComment(commentId))
-    //     if (res) {
-    //         history.push(`/explore/${illusionId}`)
-    //     }
-    // }
+    async function onDeleteComment(commentId) {
+        let res = await dispatch(deleteComment(commentId))
+        if (res) {
+            history.push(`/explore/${illusionId}`)
+        }
+    }
     // onClick={onDeleteComment(comment.id)}
 
     return (
@@ -66,19 +67,22 @@ function SingleIllusion() {
                         <Link to='/explore' className="deleteButton" onClick={onDeleteIllusion}>Delete</Link> : null}
                 </div>
                 <div className="commentsContainer">
+                    <div>
+                        <PostComment />
+                    </div>
                     {comments.map((comment) => (
                         <div className="singleComment">
                             <div>
                                 {getUsername(comment.userId)} said: {comment.comment}
                             </div>
-                            {/* {sessionUser.id === comment.userId ?
-                            <div className="commentEdit">
-                                Edit
-                            </div> : null}
                             {sessionUser.id === comment.userId ?
-                            <Link to={`/explore/${illusionId}`} className="commentDelete" onClick={onDeleteComment(comment.id)}>
+                            <NavLink className="commentEdit" exact to={`/explore/${illusionId}/${comment.id}/edit`}>
+                                Edit
+                            </NavLink> : null}
+                            {sessionUser.id === comment.userId ?
+                            <Link to={`/explore/${illusionId}`} className="commentDelete" onClick={() => onDeleteComment(comment.id)}>
                                 Delete
-                            </Link> : null} */}
+                            </Link> : null}
                         </div>
                     ))}
                 </div>

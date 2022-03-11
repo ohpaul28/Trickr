@@ -13,6 +13,12 @@ const validateCommentPost = [
     handleValidationErrors
 ]
 
+// router.get('/:illusionId/:commentId', asyncHandler(async (req, res) => {
+//     const commentId = parseInt(req.params, 10)
+//     console.log("==========", commentId)
+//     const comments = await Comment.findByPk(commentId);
+//     return res.json(comments);
+// }))
 
 router.get('/:illusionId', asyncHandler(async (req, res) => {
     const illusionId = parseInt(req.params.illusionId, 10)
@@ -24,21 +30,16 @@ router.get('/:illusionId', asyncHandler(async (req, res) => {
     res.json(comments)
 }))
 
-router.get('/:id', asyncHandler(async (req, res) => {
-    const commentId = parseInt(req.params.id, 10)
-    const comments = await Comment.findByPk(commentId);
-    return res.json(comments);
-}))
 
 router.post('/', asyncHandler(async (req, res) => {
     const comment = await Comment.create(req.body)
     return res.json(comment);
 }))
 
-router.put('/:id',
+router.put('/:illusionId/:commentId',
 validateCommentPost,
 asyncHandler(async (req, res) => {
-    const commentId = parseInt(req.params.id)
+    const commentId = parseInt(req.params.commentId)
     const { comment } = req.body
     const newComment = await Comment.findByPk(commentId)
     if (newComment) {
