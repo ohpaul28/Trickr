@@ -14,9 +14,10 @@ function SingleIllusion() {
     const sessionUser = useSelector((state) => state.session.user);
     const illusionObj = useSelector((state) => state.illusionState[illusionId])
     const commentsObj = useSelector((state) => state.commentState);
-    const usersObj = useSelector((state) => state.userState);
+    const usersObj = useSelector((state) => state.usersState);
     const comments = Object.values(commentsObj);
-    // console.log(usersObj)
+    const users = Object.values(usersObj);
+    // console.log("===================",users[0])
 
 
     useEffect(() => {
@@ -25,6 +26,11 @@ function SingleIllusion() {
         dispatch(getUsers())
     }, [dispatch, illusionId])
 
+    const getUsername = (userId) => {
+        const username = users.find(user => user.id === userId)
+        // console.log("========================",username)
+        return username?.username
+    }
 
 
     function onDelete() {
@@ -55,7 +61,7 @@ function SingleIllusion() {
                 <div className="commentsContainer">
                     {comments.map((comment) => (
                         <div className="singleComment">
-                            {comment.userId} said: {comment.comment}
+                            {getUsername(comment.userId)} said: {comment.comment}
                         </div>
                     ))}
                 </div>

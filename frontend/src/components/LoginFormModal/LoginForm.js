@@ -39,11 +39,11 @@ function LoginForm({ showLModal, setShowLModal, showSModal, setShowSModal }) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <ul>
+            <div>
                 {errors.map((error, idx) => (
                     <li id="error" key={idx}>{error}</li>
                 ))}
-            </ul>
+            </div>
             <div className="formModal">
                 Log in to Trickr
             </div>
