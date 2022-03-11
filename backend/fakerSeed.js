@@ -15,7 +15,7 @@ const seedComments = num => {
     while (i < num) {
         const comments = {
             userId: getRandomInt(3),
-            illusionId: getRandomInt(9),
+            illusionId: getRandomInt(25),
             comment: faker.lorem.sentence(),
             createdAt: fill,
             updatedAt: fill

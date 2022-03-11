@@ -59,11 +59,11 @@ function SingleIllusion() {
                 {<h3 className="illusionTitle">{illusionObj?.title}</h3>}
                 {<div className="illusionDescription">{illusionObj?.description}</div>}
                 <div className="editDeleteContainer">
-                    {sessionUser.id === illusionObj.userId ?
+                    {sessionUser.id === illusionObj?.userId ?
                         <NavLink className="editButton" exact to={`/explore/${illusionId}/edit`}>
                             Edit
                         </NavLink> : null}
-                    {sessionUser.id === illusionObj.userId ?
+                    {sessionUser.id === illusionObj?.userId ?
                         <Link to='/explore' className="deleteButton" onClick={onDeleteIllusion}>Delete</Link> : null}
                 </div>
                 <div className="commentsContainer">
@@ -73,13 +73,13 @@ function SingleIllusion() {
                     {comments.map((comment) => (
                         <div className="singleComment">
                             <div>
-                                {getUsername(comment.userId)} said: {comment.comment}
+                                {getUsername(comment?.userId)} said: {comment.comment}
                             </div>
-                            {sessionUser.id === comment.userId ?
+                            {sessionUser.id === comment?.userId ?
                             <NavLink className="commentEdit" exact to={`/explore/${illusionId}/${comment.id}/edit`}>
                                 Edit
                             </NavLink> : null}
-                            {sessionUser.id === comment.userId ?
+                            {sessionUser.id === comment?.userId ?
                             <Link to={`/explore/${illusionId}`} className="commentDelete" onClick={() => onDeleteComment(comment.id)}>
                                 Delete
                             </Link> : null}
