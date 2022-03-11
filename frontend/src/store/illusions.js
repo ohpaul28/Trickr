@@ -113,7 +113,7 @@ export const getAllIllusions = () => async (dispatch) => {
 }
 
 const initialState = {
-    isLoading: true
+    // isLoading: true
 };
 
 const illusionsReducer = (state = initialState, action) => {

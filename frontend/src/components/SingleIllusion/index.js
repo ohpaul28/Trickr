@@ -3,7 +3,7 @@ import { useParams, NavLink, useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOneIllusion } from '../../store/illusions';
 import { deleteIllusion } from '../../store/illusions';
-import { getAllTheComments } from '../../store/comments';
+import { deleteComment, getAllTheComments } from '../../store/comments';
 import { getUsers } from '../../store/users';
 import './SingleIllusion.css';
 
@@ -17,7 +17,6 @@ function SingleIllusion() {
     const usersObj = useSelector((state) => state.usersState);
     const comments = Object.values(commentsObj);
     const users = Object.values(usersObj);
-    // console.log("===================",users[0])
 
 
     useEffect(() => {
@@ -26,6 +25,8 @@ function SingleIllusion() {
         dispatch(getUsers())
     }, [dispatch, illusionId])
 
+
+
     const getUsername = (userId) => {
         const username = users.find(user => user.id === userId)
         // console.log("========================",username)
@@ -33,14 +34,20 @@ function SingleIllusion() {
     }
 
 
-    function onDelete() {
-
+    function onDeleteIllusion() {
         let res = dispatch(deleteIllusion(illusionId))
-
         if (res) {
             history.push('/explore')
         }
     }
+
+    // function onDeleteComment(commentId) {
+    //     let res = dispatch(deleteComment(commentId))
+    //     if (res) {
+    //         history.push(`/explore/${illusionId}`)
+    //     }
+    // }
+    // onClick={onDeleteComment(comment.id)}
 
     return (
         <div className="singleIllusion">
@@ -56,12 +63,22 @@ function SingleIllusion() {
                             Edit
                         </NavLink> : null}
                     {sessionUser.id === illusionObj.userId ?
-                        <Link to='/explore' className="deleteButton" onClick={onDelete}>Delete</Link> : null}
+                        <Link to='/explore' className="deleteButton" onClick={onDeleteIllusion}>Delete</Link> : null}
                 </div>
                 <div className="commentsContainer">
                     {comments.map((comment) => (
                         <div className="singleComment">
-                            {getUsername(comment.userId)} said: {comment.comment}
+                            <div>
+                                {getUsername(comment.userId)} said: {comment.comment}
+                            </div>
+                            {/* {sessionUser.id === comment.userId ?
+                            <div className="commentEdit">
+                                Edit
+                            </div> : null}
+                            {sessionUser.id === comment.userId ?
+                            <Link to={`/explore/${illusionId}`} className="commentDelete" onClick={onDeleteComment(comment.id)}>
+                                Delete
+                            </Link> : null} */}
                         </div>
                     ))}
                 </div>

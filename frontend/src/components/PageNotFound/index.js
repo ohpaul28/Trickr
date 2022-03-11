@@ -1,8 +1,9 @@
 import React from 'react';
+import './PageNotFound.css';
 
 function PageNotFound() {
     return(
-        <h1>Page Not Found</h1>
+        <h1 className="pnf">Page Not Found</h1>
     );
 }
 
