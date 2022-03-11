@@ -3,6 +3,8 @@ import { useParams, NavLink, useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOneIllusion } from '../../store/illusions';
 import { deleteIllusion } from '../../store/illusions';
+import { getAllTheComments } from '../../store/comments';
+import { getUsers } from '../../store/users';
 import './SingleIllusion.css';
 
 function SingleIllusion() {
@@ -11,9 +13,16 @@ function SingleIllusion() {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const illusionObj = useSelector((state) => state.illusionState[illusionId])
+    const commentsObj = useSelector((state) => state.commentState);
+    const usersObj = useSelector((state) => state.userState);
+    const comments = Object.values(commentsObj);
+    // console.log(usersObj)
+
 
     useEffect(() => {
         dispatch(getOneIllusion(illusionId))
+        dispatch(getAllTheComments(illusionId))
+        dispatch(getUsers())
     }, [dispatch, illusionId])
 
 
@@ -43,8 +52,12 @@ function SingleIllusion() {
                     {sessionUser.id === illusionObj.userId ?
                         <Link to='/explore' className="deleteButton" onClick={onDelete}>Delete</Link> : null}
                 </div>
-                <div className="comments">
-                    Comments will go here
+                <div className="commentsContainer">
+                    {comments.map((comment) => (
+                        <div className="singleComment">
+                            {comment.userId} said: {comment.comment}
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>

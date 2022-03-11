@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import illusionsReducer from './illusions';
 import sessionReducer from './session';
 import commentsReducer from './comments';
+import usersReducer from './users';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     illusionState: illusionsReducer,
-    commentState: commentsReducer
+    commentState: commentsReducer,
+    usersState: usersReducer
 });
 
 let enhancer;

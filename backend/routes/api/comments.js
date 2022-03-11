@@ -14,9 +14,14 @@ const validateCommentPost = [
 ]
 
 
-router.get('/', asyncHandler(async (req, res) => {
-    const comments = await Comment.findAll();
-    return res.json(comments);
+router.get('/:illusionId', asyncHandler(async (req, res) => {
+    const illusionId = parseInt(req.params.illusionId, 10)
+    const comments = await Comment.findAll({
+        where: {
+            illusionId: illusionId
+        }
+    })
+    res.json(comments)
 }))
 
 router.get('/:id', asyncHandler(async (req, res) => {

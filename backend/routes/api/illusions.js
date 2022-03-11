@@ -28,15 +28,15 @@ const validateIllusionPatch = [
 ]
 
 //comments routes
-router.get('/:illusionId', asyncHandler(async (req, res) => {
-    const illusionId = parseInt(req.params.illusionId, 10)
-    const comments = await Comment.findAll({
-        where: {
-            illusionId: illusionId
-        }
-    })
-    res.json(comments)
-}))
+// router.get('/:illusionId', asyncHandler(async (req, res) => {
+//     const illusionId = parseInt(req.params.illusionId, 10)
+//     const comments = await Comment.findAll({
+//         where: {
+//             illusionId: illusionId
+//         }
+//     })
+//     res.json(comments)
+// }))
 
 //illusion image routes
 router.get('/', asyncHandler(async (req, res) => {

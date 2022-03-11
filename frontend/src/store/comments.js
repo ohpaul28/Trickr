@@ -41,7 +41,7 @@ const deleteOne = (comment) => {
 
 //thunk action creators
 export const deleteComment = (commentId) => async dispatch => {
-    const res = await csrfFetch(`api/comments/${commentId}`, {
+    const res = await csrfFetch(`/api/comments/${commentId}`, {
         method: "DELETE",
     })
 
@@ -72,8 +72,8 @@ export const addComment = (data) => async dispatch => {
     dispatch(addOneComment(newComment))
 }
 
-export const getAllTheComments = () => async (dispatch) => {
-    const res = await fetch('api/explore')
+export const getAllTheComments = (illusionId) => async (dispatch) => {
+    const res = await fetch(`/api/comments/${illusionId}`)
 
     if (res.ok) {
         const comments = await res.json();
@@ -82,9 +82,7 @@ export const getAllTheComments = () => async (dispatch) => {
     }
 }
 
-const initialState = {
-    isLoading: true
-}
+const initialState = {};
 
 
 const commentsReducer = (state = initialState, action) => {

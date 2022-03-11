@@ -15,13 +15,13 @@ function Explore() {
 
     return (
         <div className="background">
-            <ul className="illusionsContainer">
+            <div className="illusionsContainer">
             {illusions.map(({id, illusionURL}) =>(
-                <Link key={id} to={`/explore/${id}`}>
-                    <img className="illusion" key={id} alt='' src={illusionURL}/>
+                <Link to={`/explore/${id}`}>
+                    <img className="illusion" alt='' src={illusionURL}/>
                 </Link>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }
