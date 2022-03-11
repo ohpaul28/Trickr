@@ -8,10 +8,6 @@ const { Illusion, Comment } = require('../../db/models');
 
 const router = express.Router();
 
-router.get('/', asyncHandler(async (req, res) => {
-    const illusions = await Illusion.findAll();
-    res.json(illusions);
-}))
 
 const validateIllusionPost = [
     check('title')
@@ -30,6 +26,27 @@ const validateIllusionPatch = [
         .isLength({ max: 20 })
         .withMessage('Please provide a new title.')
 ]
+
+//comments routes
+router.get('/:illusionId', asyncHandler(async (req, res) => {
+    const illusionId = parseInt(req.params.illusionId, 10)
+    const comments = await Comment.findAll({
+        where: {
+            illusionId: illusionId
+        }
+    })
+    res.json(comments)
+}))
+
+//illusion image routes
+router.get('/', asyncHandler(async (req, res) => {
+    const illusions = await Illusion.findAll({
+        include: {
+            model: Comment
+        }
+    });
+    res.json(illusions);
+}))
 
 router.get(
     '/:illusionId',
@@ -83,7 +100,7 @@ router.put('/:illusionId',
 
 router.delete('/:illusionId',
     asyncHandler(async (req, res) => {
-        const illusionId = parseInt(req.params.illusionId)
+        const illusionId = parseInt(req.params.illusionId, 10)
 
         const illusion = await Illusion.findOne({
             where: {
