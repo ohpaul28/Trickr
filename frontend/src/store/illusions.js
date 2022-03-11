@@ -2,7 +2,7 @@ import { csrfFetch } from './csrf'
 
 
 const GET_ALL_ILLUSIONS = '/illusions/getAllIllusions';
-const GET_ONE_ILLUSION = '/illusions/getOneIllusion';
+const GET_ONE_ILLUSION = '/illusions/getAnIllusion';
 const ADD_ONE = '/illusions/addOne';
 const UPDATE_ONE = '/illusions/updateOne';
 const DELETE_ONE = '/illusions/deleteOne';
@@ -17,7 +17,7 @@ const getIllusions = (illusions) => {
     }
 }
 
-const getOneIllusion = (illusion) => {
+const getAnIllusion = (illusion) => {
     return {
         type: GET_ONE_ILLUSION,
         illusion
@@ -99,7 +99,7 @@ export const addIllusion = (data) => async dispatch => {
 export const getOneIllusion = (illusionId) => async (dispatch) => {
     const response = await fetch(`/api/explore/${illusionId}`)
     const illusion = await response.json();
-    dispatch(getOneIllusion(illusion));
+    dispatch(getAnIllusion(illusion));
     return illusion
 }
 
