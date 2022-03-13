@@ -1,5 +1,5 @@
 .postContainer {
-    height: 30vh;
+    height: 200px;
     background-color: rgba(126, 113, 113, 0.301);
     display: flex;
     align-self: center;
@@ -15,6 +15,12 @@
     justify-content: center;
     align-items: center;
     border-style: none;
+}
+
+.postIllusionInput {
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
 }
 
 .postInput {

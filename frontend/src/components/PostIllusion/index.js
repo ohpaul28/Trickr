@@ -40,7 +40,7 @@ function PostIllusion() {
                     value={title}
                     placeholder="Please provide a title"
                     name="title"
-                    className="postInput"
+                    className="postIllusionInput"
                     required
                 />
                 <input
@@ -49,7 +49,7 @@ function PostIllusion() {
                     value={illusionURL}
                     placeholder="Your Illusion's URL"
                     name="illusionUrl"
-                    className="postInput"
+                    className="postIllusionInput"
                     required
                 />
                 <textarea

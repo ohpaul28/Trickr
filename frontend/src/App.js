@@ -29,7 +29,7 @@ function App() {
         <Switch>
           <Route exact path='/'>
             {sessionUser ?
-            <UserPhotos /> :
+            <Explore /> :
             <LandingPage />}
           </Route>
           <Route path='/explore/:illusionId/:commentId/edit'>

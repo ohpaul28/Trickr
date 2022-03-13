@@ -42,8 +42,8 @@ function EditComment() {
                     value={updateThisComment}
                     onChange={(e) => setUpdateThisComment(e.target.value)}
                     name="body"
-                    placeholder="New Comment"
                     rows="5"
+                    placeholder="New Comment"
                     className="descriptionInput"
                 ></textarea>
                 <div className="postButtonContainer">
