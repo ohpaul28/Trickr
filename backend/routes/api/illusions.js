@@ -27,18 +27,18 @@ const validateIllusionPatch = [
         .withMessage('Please provide a new title.')
 ]
 
-//comments routes
-// router.get('/:illusionId', asyncHandler(async (req, res) => {
-//     const illusionId = parseInt(req.params.illusionId, 10)
-//     const comments = await Comment.findAll({
-//         where: {
-//             illusionId: illusionId
-//         }
-//     })
-//     res.json(comments)
-// }))
 
-//illusion image routes
+router.get('/user/:userId', asyncHandler(async (req, res) => {
+    const userId = parseInt(req.params.userId, 10)
+    const illusions = await Illusion.findAll({
+        where: {
+            userId: userId
+        }
+    })
+
+    return res.json(illusions);
+}))
+
 router.get('/', asyncHandler(async (req, res) => {
     const illusions = await Illusion.findAll({
         include: {

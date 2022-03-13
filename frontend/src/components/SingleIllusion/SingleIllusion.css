@@ -5,12 +5,17 @@
 .singleIllusion{
     width: 100%;
     background-color: #f3f5f6;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
 .singleIllusionContainer {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
     background-color: #212124;
 }
@@ -40,11 +45,10 @@
 .editDeleteContainer {
     display: grid;
     gap: 10px;
-    width: 200px;
+    width: 160px;
     grid-template-columns: 1fr 1fr;
     justify-content: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 0;
 }
 
 .editButton {
@@ -69,7 +73,41 @@
     color: white;
 }
 
-.comments {
+.commentsContainer {
+    width: 300px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+
+}
+
+.commentInput {
+    margin: 5px 5px;
+}
+
+.postContainer {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
+}
+
+.postComment {
+    background-color: rgba(126, 113, 113, 0.301);
+    border-radius: 3px;
+    border: 3px solid rgba(0, 0, 0, 0.246);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.singleComment {
+    border-top: solid #212124 1px;
+    padding: 10px;
+}
+
+.allComments {
+    width: 500px;
+    height: 300px;
+    display: flex;
+    flex-direction: column-reverse;
 }

@@ -17,3 +17,9 @@ button.inModal {
     color: white;
     cursor: pointer;
 }
+
+textarea {
+    resize: none;
+    width: 250px;
+    font-family: Proxima Nova,Helvetica,sans-serif;
+}

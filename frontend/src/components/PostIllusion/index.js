@@ -23,7 +23,7 @@ function PostIllusion() {
         }
 
         let res = dispatch(addIllusion(newIllusion))
-        
+
         if (res) {
             history.push('/explore')
         }
@@ -33,7 +33,7 @@ function PostIllusion() {
 
     return (
         <div className="postContainer">
-            <form className="postInputs" onSubmit={handleSubmit}>
+            <form className="postIllusion" onSubmit={handleSubmit}>
                 <input
                     type="text"
                     onChange={(e) => setTitle(e.target.value)}

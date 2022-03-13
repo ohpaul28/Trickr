@@ -29,8 +29,8 @@ function PostComment() {
 
 
     return (
-        <div className="postContainer">
-            <form className="postInputs" onSubmit={handleSubmit}>
+        <div>
+            <form className="postComment" onSubmit={handleSubmit}>
                 <textarea
                     value={newComment}
                     onChange={(e) => setNewComment(e.target.value)}

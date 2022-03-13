@@ -65,25 +65,29 @@ function SingleIllusion() {
                     {sessionUser.id === illusionObj?.userId ?
                         <Link to='/explore' className="deleteButton" onClick={onDeleteIllusion}>Delete</Link> : null}
                 </div>
+                <div>
+                    <PostComment />
+                </div>
                 <div className="commentsContainer">
-                    <div>
-                        <PostComment />
-                    </div>
-                    {comments.map((comment) => (
-                        <div className="singleComment">
-                            <div>
-                                {getUsername(comment?.userId)} said: {comment.comment}
+                    <div className="allComments">
+                        {comments.map((comment) => (
+                            <div className="singleComment">
+                                <div>
+                                    {getUsername(comment?.userId)} said: {comment.comment}
+                                </div>
+                                <div className="editDeleteContain">
+                                    {sessionUser.id === comment?.userId ?
+                                    <NavLink className="commentEdit" exact to={`/explore/${illusionId}/${comment.id}/edit`}>
+                                        Edit
+                                    </NavLink> : null}
+                                    {sessionUser.id === comment?.userId ?
+                                    <Link to={`/explore/${illusionId}`} className="commentDelete" onClick={() => onDeleteComment(comment.id)}>
+                                        Delete
+                                    </Link> : null}
+                                </div>
                             </div>
-                            {sessionUser.id === comment?.userId ?
-                            <NavLink className="commentEdit" exact to={`/explore/${illusionId}/${comment.id}/edit`}>
-                                Edit
-                            </NavLink> : null}
-                            {sessionUser.id === comment?.userId ?
-                            <Link to={`/explore/${illusionId}`} className="commentDelete" onClick={() => onDeleteComment(comment.id)}>
-                                Delete
-                            </Link> : null}
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

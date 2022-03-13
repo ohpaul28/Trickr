@@ -8,12 +8,13 @@
     /* flex-direction: column; */
 }
 
-.postInputs {
+.postIllusion {
     display: grid;
     padding: 20px;
     border-radius: 3px;
     justify-content: center;
     align-items: center;
+    border-style: none;
 }
 
 .postInput {

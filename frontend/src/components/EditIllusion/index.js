@@ -33,9 +33,9 @@ function EditIllusion() {
         history.push(`/explore/${illusionId}`)
     }
 
-    
+
     return (
-        <div className="postContainer">
+        <div className="editContainer">
             <form className="postInputs" onSubmit={handleSubmit}>
                 <input
                     type="text"
