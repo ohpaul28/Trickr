@@ -9,7 +9,8 @@ const router = express.Router();
 
 const validateCommentPost = [
     check('comment')
-        .exists({checkFalsy: true}),
+        .exists({checkFalsy: true})
+        .withMessage('Please provide a comment.'),
     handleValidationErrors
 ]
 

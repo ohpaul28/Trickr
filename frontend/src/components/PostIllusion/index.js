@@ -10,6 +10,7 @@ function PostIllusion() {
     const [illusionURL, setIllusionURL] = useState("");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    const [errors, setErrors] = useState([]);
     const history = useHistory();
 
     const handleSubmit = (e) => {
@@ -22,10 +23,14 @@ function PostIllusion() {
             description
         }
 
-        let res = dispatch(addIllusion(newIllusion))
+        if (!newIllusion.illusionURL) setErrors(['Please provide a URL for your illusion.'])
+        if (!newIllusion.title) setErrors(['Please provide a Title for your illusion.']);
+        if (newIllusion.title && newIllusion.illusionURL) {
+            let res = dispatch(addIllusion(newIllusion))
 
-        if (res) {
-            history.push('/explore')
+            if (res) {
+                history.push('/explore')
+            }
         }
 
     }
@@ -33,6 +38,10 @@ function PostIllusion() {
 
     return (
         <div className="postContainer">
+            <ul>
+                {errors.map((error, idx) =>
+                    <li id="error" key={idx}>{error}</li>)}
+            </ul>
             <form className="postIllusion" onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -41,7 +50,6 @@ function PostIllusion() {
                     placeholder="Please provide a title"
                     name="title"
                     className="postIllusionInput"
-                    required
                 />
                 <input
                     type="text"
@@ -50,7 +58,6 @@ function PostIllusion() {
                     placeholder="Your Illusion's URL"
                     name="illusionUrl"
                     className="postIllusionInput"
-                    required
                 />
                 <textarea
                     value={description}

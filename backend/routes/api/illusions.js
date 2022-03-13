@@ -20,11 +20,12 @@ const validateIllusionPost = [
     handleValidationErrors
 ]
 
-const validateIllusionPatch = [
+const validateIllusionPut = [
     check('title')
         .exists({ checkFalsy: true })
         .isLength({ max: 20 })
-        .withMessage('Please provide a new title.')
+        .withMessage('Please provide a new title.'),
+    handleValidationErrors
 ]
 
 router.get('/', asyncHandler(async (req, res) => {
@@ -65,7 +66,7 @@ router.post('/',
 )
 
 router.put('/:illusionId',
-    validateIllusionPatch,
+    validateIllusionPut,
     asyncHandler(async (req, res) => {
         const illusionId = parseInt(req.params.illusionId)
         const { title, description } = req.body

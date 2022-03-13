@@ -31,11 +31,11 @@ function SignupForm({showLModal, setShowLModal, showSModal, setShowSModal}) {
     // setShowSModal(false);
     return (
         <form onSubmit={handleSubmit}>
-            <div>
+            <ul>
                 {errors.map((error, idx) =>
                 <li id="error" key={idx}>{error}</li>)}
-            </div>
-            <div>
+            </ul>
+            <div className="formModal">
                 Sign up for Trickr
             </div>
             <label className="formModal">
