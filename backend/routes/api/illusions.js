@@ -27,18 +27,6 @@ const validateIllusionPatch = [
         .withMessage('Please provide a new title.')
 ]
 
-
-router.get('/user/:userId', asyncHandler(async (req, res) => {
-    const userId = parseInt(req.params.userId, 10)
-    const illusions = await Illusion.findAll({
-        where: {
-            userId: userId
-        }
-    })
-
-    return res.json(illusions);
-}))
-
 router.get('/', asyncHandler(async (req, res) => {
     const illusions = await Illusion.findAll({
         include: {

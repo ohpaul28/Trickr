@@ -10,7 +10,6 @@ import Explore from "./components/Explore";
 import SingleIllusion from "./components/SingleIllusion";
 import EditComment from "./components/EditComment";
 import EditIllusion from "./components/EditIllusion";
-import UserPhotos from "./components/UserPhotos";
 
 
 function App() {
