@@ -15,4 +15,5 @@ button.inModal {
     border-style: none;
     background-color: #128FDC;
     color: white;
+    cursor: pointer;
 }

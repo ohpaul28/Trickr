@@ -21,7 +21,16 @@
     border-radius: 3px;
     color: white;
     cursor: pointer;
-    margin-top: 10px;
-    padding: 10px 10px 10px 10px;
-    font-weight: 800;
+    margin-top: 60px;
+    padding: 10px 20px 10px 20px;
+    font-weight: 700;
+}
+
+.landingH1 {
+    font-size: 56px;
+
+}
+
+.landingMessage {
+    font-size: 26px;
 }

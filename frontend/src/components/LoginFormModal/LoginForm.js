@@ -76,7 +76,7 @@ function LoginForm({ showLModal, setShowLModal, showSModal, setShowSModal }) {
             </div>
             <div className='reNav formModal'>
                 Not a Trickr member?
-                <span onClick={onClick}>Sign up here.</span>
+                <span className="reNavButton" onClick={onClick}>Sign up here.</span>
             </div>
         </form>
     );
