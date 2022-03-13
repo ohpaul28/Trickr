@@ -1,7 +1,7 @@
 .illusionsContainer {
     display: grid;
     grid-template-columns: 300px 300px 300px 300px 300px;
-    position: relative;
+    position: absolute;
     align-items: center;
     justify-content: center;
     flex-direction: column;
