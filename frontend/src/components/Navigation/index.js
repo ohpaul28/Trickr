@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
@@ -22,10 +22,14 @@ function Navigation({ isLoaded }) {
     } else {
         sessionLinks = (
             <div className="intro">
-                <LoginFormModal showLModal={showLModal} setShowLModal={setShowLModal} showSModal={showSModal} setShowSModal={setShowSModal}/>
-                <SignupFormModal showSModal={showSModal} setShowSModal={setShowSModal} showLModal={showLModal} setShowLModal={setShowLModal}/>
+                <LoginFormModal showLModal={showLModal} setShowLModal={setShowLModal} showSModal={showSModal} setShowSModal={setShowSModal} />
+                <SignupFormModal showSModal={showSModal} setShowSModal={setShowSModal} showLModal={showLModal} setShowLModal={setShowLModal} />
             </div>
         );
+    }
+
+    const onClick = () => {
+        setShowLModal(true);
     }
 
     return (
@@ -33,14 +37,18 @@ function Navigation({ isLoaded }) {
             <div className="navlinkTop">
                 <div className="naviLinks">
                     <Link className="logoImg" to='/'>
-                        <img href="" alt="" className="logo" src={logo}/>
+                        <img href="" alt="" className="logo" src={logo} />
                     </Link>
-                    <Link className="exploreLink" to='/explore'>
-                        <div>Explore</div>
-                    </Link>
-                    <Link className="postLink" to='/post'>
-                        <div>Post</div>
-                    </Link>
+                    {sessionUser ?
+                        <Link className="exploreLink" to='/explore'>
+                            <div>Explore</div>
+                        </Link> :
+                        <div className="exploreLink" onClick={onClick}>Explore</div>}
+                    {sessionUser ?
+                        <Link className="postLink" to='/post'>
+                            <div>Post</div>
+                        </Link> :
+                        <div className="postLink" onClick={onClick}>Post</div>}
                 </div>
                 {isLoaded && sessionLinks}
             </div>
