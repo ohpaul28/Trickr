@@ -117,7 +117,6 @@ const commentsReducer = (state = initialState, action) => {
             return newState
         }
         case UPDATE_ONE: {
-            console.log("_____________________",action.comment)
             newState[action.comment?.id] = action.comment
             return newState
         }

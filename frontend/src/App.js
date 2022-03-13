@@ -10,7 +10,7 @@ import Explore from "./components/Explore";
 import SingleIllusion from "./components/SingleIllusion";
 import EditComment from "./components/EditComment";
 import EditIllusion from "./components/EditIllusion";
-import PleaseLogin from "./components/PleaseLogin";
+
 // import UserPhotos from './components/UserPhotos';
 
 function App() {
@@ -28,10 +28,9 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path='/'>
-            {/* {sessionUser && <UserPhotos />} */}
-            {sessionUser && <Explore />}
-            {!sessionUser && <LandingPage />}
-            {/* <LandingPage /> */}
+            {sessionUser ?
+            <Explore /> :
+            <LandingPage />}
           </Route>
           <Route path='/explore/:illusionId/:commentId/edit'>
             <EditComment />
@@ -46,8 +45,7 @@ function App() {
             <PostIllusion />
           </Route>
           <Route path='/explore'>
-            {sessionUser ? <Explore /> : <PleaseLogin />}
-            {/* {!sessionUser && <PleaseLogin />} */}
+            <Explore />
           </Route>
           <Route>
             <PageNotFound />

@@ -30,7 +30,6 @@ function SingleIllusion() {
 
     const getUsername = (userId) => {
         const username = users.find(user => user.id === userId)
-        // console.log("========================",username)
         return username?.username
     }
 

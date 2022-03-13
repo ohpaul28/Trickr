@@ -13,13 +13,6 @@ const validateCommentPost = [
     handleValidationErrors
 ]
 
-// router.get('/:illusionId/:commentId', asyncHandler(async (req, res) => {
-//     const commentId = parseInt(req.params, 10)
-//     console.log("==========", commentId)
-//     const comments = await Comment.findByPk(commentId);
-//     return res.json(comments);
-// }))
-
 router.get('/:illusionId', asyncHandler(async (req, res) => {
     const illusionId = parseInt(req.params.illusionId, 10)
     const comments = await Comment.findAll({

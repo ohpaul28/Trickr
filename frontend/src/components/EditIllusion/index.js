@@ -14,15 +14,8 @@ function EditIllusion() {
     const { illusionId } = useParams();
 
 
-    // console.log("___________________________________________", title)
-    // console.log("___________________________________________", description)
-
-
     const handleSubmit = e => {
         e.preventDefault();
-
-        // console.log("============", title)
-        // console.log("============", description)
 
         const updatedIllusion = {
             id: illusion[illusionId].id,
@@ -31,16 +24,16 @@ function EditIllusion() {
             description: description? description : illusion.description
         }
 
-        // if (!title) setTitle(illusion.title)
-        // if (!description) setDescription(illusion.description)
         dispatch(updateIllusion(updatedIllusion))
         history.push(`/explore/${illusionId}`)
     }
+
 
     const onClick = () => {
         history.push(`/explore/${illusionId}`)
     }
 
+    
     return (
         <div className="postContainer">
             <form className="postInputs" onSubmit={handleSubmit}>

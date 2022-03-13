@@ -53,8 +53,6 @@ const deleteOne = (illusion) => {
 }
 
 
-
-
 //thunk action creator
 export const deleteIllusion = (illusionId) => async dispatch => {
     const res = await csrfFetch(`/api/explore/${illusionId}`, {
@@ -69,8 +67,6 @@ export const deleteIllusion = (illusionId) => async dispatch => {
 }
 
 export const updateIllusion = updateIllusion => async dispatch => {
-    // console.log(updateIllusion)
-    // console.log("=------------", updateIllusion)
     const req = await csrfFetch(`/api/explore/${updateIllusion.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },

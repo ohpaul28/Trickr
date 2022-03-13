@@ -79,7 +79,6 @@ router.post('/',
 router.put('/:illusionId',
     validateIllusionPatch,
     asyncHandler(async (req, res) => {
-        // console.log("=------------",req.body)
         const illusionId = parseInt(req.params.illusionId)
         const { title, description } = req.body
         const illusion = await Illusion.findOne({
