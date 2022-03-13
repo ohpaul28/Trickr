@@ -1,10 +1,17 @@
+.backgroundPost {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    width: 100%;
+    background-image: url('../../images/lines.jpg');
+}
 .navButton {
     justify-content: center;
     align-items: center;
 }
 .singleIllusion{
     width: 100%;
-    height: 100%;
     background-color: #f3f5f6;
 }
 
@@ -14,6 +21,7 @@
     align-items: center;
     width: 100%;
     background-color: #212124;
+    top: 0;
 }
 
 .illusionTitle {
@@ -83,8 +91,16 @@
 
 .postContainer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    height: 300px;
+    width: 300px;
+}
+
+.postErrors {
+    color: white;
+    font-weight: 600;
 }
 
 .postComment {

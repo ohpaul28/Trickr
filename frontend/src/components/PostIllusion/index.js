@@ -37,40 +37,42 @@ function PostIllusion() {
 
 
     return (
-        <div className="postContainer">
-            <ul>
-                {errors.map((error, idx) =>
-                    <li id="error" key={idx}>{error}</li>)}
-            </ul>
-            <form className="postIllusion" onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    onChange={(e) => setTitle(e.target.value)}
-                    value={title}
-                    placeholder="Please provide a title"
-                    name="title"
-                    className="postIllusionInput"
-                />
-                <input
-                    type="text"
-                    onChange={(e) => setIllusionURL(e.target.value)}
-                    value={illusionURL}
-                    placeholder="Your Illusion's URL"
-                    name="illusionUrl"
-                    className="postIllusionInput"
-                />
-                <textarea
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    name="body"
-                    placeholder="Description(optional)"
-                    rows="5"
-                    className="descriptionInput"
-                ></textarea>
-                <div className="postButtonContainer">
-                    <button className="postButton" type="submit">Submit</button>
-                </div>
-            </form>
+        <div className="backgroundPost">
+            <div className="postContainer">
+                <ul>
+                    {errors.map((error, idx) =>
+                        <li className="postErrors" id="error" key={idx}>{error}</li>)}
+                </ul>
+                <form className="postIllusion" onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        onChange={(e) => setTitle(e.target.value)}
+                        value={title}
+                        placeholder="Please provide a title"
+                        name="title"
+                        className="postIllusionInput"
+                    />
+                    <input
+                        type="text"
+                        onChange={(e) => setIllusionURL(e.target.value)}
+                        value={illusionURL}
+                        placeholder="Your Illusion's URL"
+                        name="illusionUrl"
+                        className="postIllusionInput"
+                    />
+                    <textarea
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        name="body"
+                        placeholder="Description(optional)"
+                        rows="5"
+                        className="descriptionInput"
+                    ></textarea>
+                    <div className="postButtonContainer">
+                        <button className="postButton" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 }

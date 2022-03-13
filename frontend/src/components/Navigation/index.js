@@ -36,7 +36,7 @@ function Navigation({ isLoaded }) {
         <>
             <div className="navlinkTop">
                 <div className="naviLinks">
-                    <Link className="logoImg" to='/'>
+                    <Link className="logoImg" to='/explore'>
                         <img href="" alt="" className="logo" src={logo} />
                     </Link>
                     {sessionUser ?
