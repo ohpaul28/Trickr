@@ -46,8 +46,8 @@ function App() {
             <PostIllusion />
           </Route>
           <Route path='/explore'>
-            {sessionUser && <Explore />}
-            {!sessionUser && <PleaseLogin />}
+            {sessionUser ? <Explore /> : <PleaseLogin />}
+            {/* {!sessionUser && <PleaseLogin />} */}
           </Route>
           <Route>
             <PageNotFound />
