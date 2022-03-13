@@ -60,7 +60,6 @@ export const deleteIllusion = (illusionId) => async dispatch => {
     })
 
     const deletedIllusionId = await res.json();
-    console.log(deletedIllusionId);
     dispatch(deleteOne(deletedIllusionId))
     return deletedIllusionId;
 
