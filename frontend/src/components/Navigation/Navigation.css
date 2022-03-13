@@ -29,6 +29,7 @@
     display: flex;
     align-content: space-between;
     justify-content: center;
+    align-items: center;
     position: absolute;
     font-family: Proxima Nova,Helvetica,sans-serif;
     top: 0;

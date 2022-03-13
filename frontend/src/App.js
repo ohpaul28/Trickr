@@ -10,6 +10,7 @@ import Explore from "./components/Explore";
 import SingleIllusion from "./components/SingleIllusion";
 import EditComment from "./components/EditComment";
 import EditIllusion from "./components/EditIllusion";
+import PleaseLogin from "./components/PleaseLogin";
 // import UserPhotos from './components/UserPhotos';
 
 function App() {
@@ -45,7 +46,8 @@ function App() {
             <PostIllusion />
           </Route>
           <Route path='/explore'>
-            <Explore />
+            {sessionUser && <Explore />}
+            {!sessionUser && <PleaseLogin />}
           </Route>
           <Route>
             <PageNotFound />
