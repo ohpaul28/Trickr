@@ -41,13 +41,13 @@ function SingleIllusion() {
         }
     }
 
-    async function onDeleteComment(commentId) {
-        let res = await dispatch(deleteComment(illusionId, commentId))
+    function onDeleteComment(commentId) {
+        let res = dispatch(deleteComment(illusionId, commentId))
         if (res) {
             history.push(`/explore/${illusionId}`)
         }
     }
-    // onClick={onDeleteComment(comment.id)}
+
 
     return (
         <div className="singleIllusion">
