@@ -27,7 +27,7 @@ function EditComment() {
         if (updatedComment.comment) {
             return dispatch(updateComment(updatedComment));
         }
-
+        history.push(`/explore/${illusionId}`)
     }
 
     const onClick = () => {

@@ -70,7 +70,7 @@ function SingleIllusion() {
                 </div>
                 <div className="commentsContainer">
                     <div className="allComments">
-                        {comments.map((comment) => (
+                        {comments?.map((comment) => (
                             <div className="singleComment">
                                 <div>
                                     {getUsername(comment?.userId)} said: {comment.comment}

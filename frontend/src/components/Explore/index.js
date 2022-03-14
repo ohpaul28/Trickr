@@ -16,7 +16,7 @@ function Explore() {
     return (
         <div className="background">
             <div className="illusionsContainer">
-            {illusions.map(({id, illusionURL}) =>(
+            {illusions?.map(({id, illusionURL}) =>(
                 <Link to={`/explore/${id}`}>
                     <img className="illusion" alt='' src={illusionURL}/>
                 </Link>
