@@ -45,3 +45,13 @@
     justify-content: center;
     align-items: center;
 }
+
+.errorValidations {
+    background-color: rgba(255, 0, 0, 0.246);
+    border-radius: 3px;
+}
+
+.postErrors {
+    color: black;
+    font-weight: 600;
+}

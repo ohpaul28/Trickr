@@ -44,9 +44,9 @@ asyncHandler(async (req, res) => {
     return res.json(newComment);
 }))
 
-router.delete('/:id',
+router.delete('/:illusionId/:commentId',
 asyncHandler(async (req, res) => {
-    const commentId = parseInt(req.params.id, 10)
+    const commentId = parseInt(req.params.commentId, 10)
 
     const comment = await Comment.findByPk(commentId);
     if (comment) {

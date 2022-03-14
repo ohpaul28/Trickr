@@ -110,8 +110,7 @@ export const getAllIllusions = () => async (dispatch) => {
     }
 }
 
-const initialState = {
-};
+const initialState = {};
 
 const illusionsReducer = (state = initialState, action) => {
     const newState = { ...state };

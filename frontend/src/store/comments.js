@@ -49,8 +49,8 @@ const deleteOne = (comment) => {
 
 
 //thunk action creators
-export const deleteComment = (commentId) => async dispatch => {
-    const res = await csrfFetch(`/api/comments/${commentId}`, {
+export const deleteComment = (illusionId, commentId) => async dispatch => {
+    const res = await csrfFetch(`/api/comments/${illusionId}/${commentId}`, {
         method: "DELETE",
     })
 
@@ -101,7 +101,13 @@ export const getAComment = (illusionId, commentId) => async (dispatch) => {
     }
 }
 
-const initialState = {};
+const initialState = {
+    101: {
+        userId: 1,
+        illusionId: 4,
+        comment: "aerjfgoauierhjglaieurgha"
+    }
+};
 
 
 const commentsReducer = (state = initialState, action) => {

@@ -1,11 +1,10 @@
 .editContainer {
-    height: 30vh;
+    height: 230px;
     background-color: rgba(126, 113, 113, 0.301);
     display: flex;
     align-self: center;
     border-radius: 3px;
     border: 3px solid rgba(0, 0, 0, 0.246)
-    /* flex-direction: column; */
 }
 
 .postInputs {
@@ -26,7 +25,8 @@
 }
 
 .descriptionInput {
-    height: 50%;
+    margin-top: 10px;
+    height: 80px;
     border-radius: 3px;
 }
 

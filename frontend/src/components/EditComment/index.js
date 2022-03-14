@@ -10,6 +10,7 @@ function EditComment() {
     const sessionUser = useSelector(state => state.session.user);
     const comment = useSelector(state => state.commentState);
     const [updateThisComment, setUpdateThisComment] = useState(comment.comment);
+    const [errors, setErrors] = useState([]);
     const history = useHistory();
     const { illusionId, commentId } = useParams();
 
@@ -23,11 +24,10 @@ function EditComment() {
             comment: comment ? updateThisComment : null
         }
 
-        let res = dispatch(updateComment(updatedComment));
-
-        if (res) {
-            history.push(`/explore/${illusionId}`)
+        if (updatedComment.comment) {
+            return dispatch(updateComment(updatedComment));
         }
+
     }
 
     const onClick = () => {

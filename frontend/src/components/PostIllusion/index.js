@@ -39,11 +39,11 @@ function PostIllusion() {
     return (
         <div className="backgroundPost">
             <div className="postContainer">
-                <ul>
+                <ul className="errorValidations">
                     {errors.map((error, idx) =>
                         <li className="postErrors" id="error" key={idx}>{error}</li>)}
                 </ul>
-                <form className="postIllusion" onSubmit={handleSubmit}>
+                <form className="postIllusion"onSubmit={handleSubmit}>
                     <input
                         type="text"
                         onChange={(e) => setTitle(e.target.value)}

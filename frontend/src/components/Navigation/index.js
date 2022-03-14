@@ -36,7 +36,7 @@ function Navigation({ isLoaded }) {
         <>
             <div className="navlinkTop">
                 <div className="naviLinks">
-                    <Link className="logoImg" to='/explore'>
+                    <Link className="logoImg" to={sessionUser ? '/explore': null}>
                         <img href="" alt="" className="logo" src={logo} />
                     </Link>
                     {sessionUser ?
@@ -53,7 +53,15 @@ function Navigation({ isLoaded }) {
                 {isLoaded && sessionLinks}
             </div>
             <div className="navLinkBot">
-                Bottom Nav
+                <a href='https://expressjs.com/'>Express</a>
+                <a href='https://www.heroku.com/what'>Heroku</a>
+                <a href='https://html.com/html5/'>HTML5</a>
+                <a href='https://www.javascript.com/about'>Javascript</a>
+                <a href='https://nodejs.org/en/about/'>Nodejs</a>
+                <a href='https://www.postgresql.org/about/'>PostgreSQL</a>
+                <a href='https://reactjs.org/'>React</a>
+                <a href='https://redux.js.org/'>Redux</a>
+                <a href='https://sequelize.org/v7/'>Sequelize</a>
             </div>
         </>
     );

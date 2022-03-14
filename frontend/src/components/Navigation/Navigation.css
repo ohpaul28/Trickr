@@ -22,7 +22,14 @@
     z-index: 100;
     width: 100%;
     height: 56px;
-    color: white;
+    padding: 0 20px;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+div.navLinkBot > * {
+    color:white;
+    text-decoration: none;
 }
 
 #root {
