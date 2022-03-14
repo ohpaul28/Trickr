@@ -102,11 +102,6 @@ export const getAComment = (illusionId, commentId) => async (dispatch) => {
 }
 
 const initialState = {
-    101: {
-        userId: 1,
-        illusionId: 4,
-        comment: "aerjfgoauierhjglaieurgha"
-    }
 };
 
 
