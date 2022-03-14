@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateComment } from '../../store/comments';
 import { useHistory, useParams } from 'react-router-dom';
@@ -25,9 +25,9 @@ function EditComment() {
         }
 
         if (updatedComment.comment) {
-            return dispatch(updateComment(updatedComment));
+            dispatch(updateComment(updatedComment));
+            history.push(`/explore/${illusionId}`)
         }
-        history.push(`/explore/${illusionId}`)
     }
 
     const onClick = () => {
