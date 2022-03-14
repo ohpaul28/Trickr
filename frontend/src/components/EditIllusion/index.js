@@ -5,13 +5,13 @@ import { useHistory, useParams } from 'react-router-dom';
 import './EditIllusion.css'
 
 function EditIllusion() {
+    const { illusionId } = useParams();
     const dispatch = useDispatch();
     const illusion = useSelector(state => state.illusionState)
     const sessionUser = useSelector((state) => state.session.user);
-    const [title, setTitle] = useState(illusion.title);
-    const [description, setDescription] = useState(illusion.description);
+    const [title, setTitle] = useState(illusion[illusionId].title);
+    const [description, setDescription] = useState(illusion[illusionId].description);
     const history = useHistory();
-    const { illusionId } = useParams();
 
 
     const handleSubmit = e => {
@@ -41,7 +41,6 @@ function EditIllusion() {
                     type="text"
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
-                    placeholder="New Title"
                     name="title"
                     className="postInput"
                 />
@@ -49,7 +48,6 @@ function EditIllusion() {
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     name="body"
-                    placeholder="New Description"
                     rows="5"
                     className="descriptionInput"
                 ></textarea>

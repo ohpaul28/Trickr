@@ -20,11 +20,9 @@ function PostComment() {
             comment: newComment
         }
         if (newComment) {
-            return dispatch(addComment(newComments))
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
-            })
+            dispatch(addComment(newComments))
+            setNewComment('')
+            return;
         }
         return setErrors(['Please provide a comment.'])
     }

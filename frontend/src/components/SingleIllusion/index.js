@@ -35,16 +35,21 @@ function SingleIllusion() {
 
 
     function onDeleteIllusion() {
-        let res = dispatch(deleteIllusion(illusionId))
-        if (res) {
+        let result = window.confirm("Are you sure you want to delete?")
+
+        if (result) {
+            dispatch(deleteIllusion(illusionId))
             history.push('/explore')
         }
     }
 
     function onDeleteComment(commentId) {
-        let res = dispatch(deleteComment(illusionId, commentId))
-        if (res) {
-            history.push(`/explore/${illusionId}`)
+        let result = window.confirm("Are you sure you want to delete?")
+        if (result) {
+            let res = dispatch(deleteComment(illusionId, commentId))
+            if (res) {
+                history.push(`/explore/${illusionId}`)
+            }
         }
     }
 
@@ -77,13 +82,13 @@ function SingleIllusion() {
                                 </div>
                                 <div className="editDeleteContain">
                                     {sessionUser.id === comment?.userId ?
-                                    <NavLink className="commentEdit" exact to={`/explore/${illusionId}/${comment.id}/edit`}>
-                                        Edit
-                                    </NavLink> : null}
+                                        <NavLink className="commentEdit" exact to={`/explore/${illusionId}/${comment.id}/edit`}>
+                                            Edit
+                                        </NavLink> : null}
                                     {sessionUser.id === comment?.userId ?
-                                    <Link to={`/explore/${illusionId}`} className="commentDelete" onClick={() => onDeleteComment(comment.id)}>
-                                        Delete
-                                    </Link> : null}
+                                        <Link to={`/explore/${illusionId}`} className="commentDelete" onClick={() => onDeleteComment(comment.id)}>
+                                            Delete
+                                        </Link> : null}
                                 </div>
                             </div>
                         ))}

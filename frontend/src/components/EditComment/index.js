@@ -6,16 +6,15 @@ import './EditComment.css';
 
 function EditComment() {
     const dispatch = useDispatch();
+    const { illusionId, commentId } = useParams();
     const illusion = useSelector(state => state.illusionState);
     const sessionUser = useSelector(state => state.session.user);
     const comment = useSelector(state => state.commentState);
-    const [updateThisComment, setUpdateThisComment] = useState(comment.comment);
-    const [errors, setErrors] = useState([]);
+    const [updateThisComment, setUpdateThisComment] = useState(comment[commentId].comment);
     const history = useHistory();
-    const { illusionId, commentId } = useParams();
 
     const handleSubmit = e => {
-        e.preventDefault();
+        // e.preventDefault();
 
         const updatedComment = {
             id: commentId,
@@ -24,10 +23,10 @@ function EditComment() {
             comment: comment ? updateThisComment : null
         }
 
-        if (updatedComment.comment) {
+        // if (updatedComment.comment) {
             dispatch(updateComment(updatedComment));
             history.push(`/explore/${illusionId}`)
-        }
+        // }
     }
 
     const onClick = () => {
@@ -43,7 +42,6 @@ function EditComment() {
                     onChange={(e) => setUpdateThisComment(e.target.value)}
                     name="body"
                     rows="5"
-                    placeholder="New Comment"
                     className="descriptionInput"
                 ></textarea>
                 <div className="postButtonContainer">
